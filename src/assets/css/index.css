@@ -2,9 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url("https://fonts.googleapis.com/css2?family=Inter&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter&family=Mulish&display=swap");
+
 * {
     margin: 0;
     padding: 0;
+    font-family: "Inter", Arial, Helvetica, sans-serif;
 }
 
 .bg-logo {
@@ -12,3 +16,8 @@
     background-repeat: no-repeat;
     background-size: 100% 100%;
 }
+
+.home-wrapper{
+    font-family: "Mulish", Arial, Helvetica, sans-serif;
+}
+
