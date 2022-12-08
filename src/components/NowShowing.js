@@ -1,27 +1,33 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import { Link } from "react-router-dom";
-import CardFilm from "./CardFilm";
-import movie1 from "../assets/images/movie-1.svg";
-import movie2 from "../assets/images/movie-2.svg";
-import movie3 from "../assets/images/movie-3.svg";
+import CardFilm from "./card/CardFilm";
 
-const NowShowing = () => {
+const NowShowing = (props) => {
+  const {desc} = props
+  const [movies, setMovies] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:8888/movies/now")
+      .then((res) => res.data)
+      .then((res) => res.movies)
+      .then((data) => setMovies(data));
+  }, []);
+
   return (
     <div className="bg-[#F5F6F8] px-28 py-12">
       <div className="flex">
         <div className="flex grow text-[#5f2eea] font-bold text-xl underline underline-offset-8">Now Showing</div>
-        <Link className="text-[#5f2eea] font-bold tex-sm" to="">
+        <Link className="text-[#5f2eea] font-bold tex-sm" to="/list-movie">
           view all
         </Link>
       </div>
 
       <div className="flex flex-nowrap overflow-x-scroll my-10">
-        <CardFilm movie={movie1} alt="spiderman" />
-        <CardFilm movie={movie2} alt="Lion King" />
-        <CardFilm movie={movie3} alt="John Wixk" />
-        <CardFilm movie={movie1} alt="spiderman" />
-        <CardFilm movie={movie2} alt="Lion King" />
-        <CardFilm movie={movie3} alt="John Wick" />
+        {movies.map((movie, i) => (
+          <CardFilm destination="/movie-detail" key={i} desc={desc} movie={movie.picture} title={movie.title} genre={movie.genre} alt={movie.title} destination="/list-movie" />
+        ))}
       </div>
     </div>
   );

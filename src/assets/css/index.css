@@ -11,13 +11,7 @@
     font-family: "Inter", Arial, Helvetica, sans-serif;
 }
 
-.bg-logo {
-    background-image: radial-gradient(rgba(43, 21, 107, 0.8), rgba(43, 21, 107, 0.8)), url(../../../public/images/MaskGroup.png);
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-}
-
-.home-wrapper{
+.home-wrapper, .nav-bar{
     font-family: "Mulish", Arial, Helvetica, sans-serif;
 }
 

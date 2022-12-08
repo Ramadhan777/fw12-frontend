@@ -1,17 +1,25 @@
-import React from "react";
+import React, { useEffect, useState} from "react";
 import { Link } from "react-router-dom";
 import Month from "./Month";
-import CardFilmUpcoming from "./CardFilmUpcoming";
-import movie4 from "../assets/images/movie-4.svg";
-import movie5 from "../assets/images/movie-5.svg";
-import movie3 from "../assets/images/movie-3.svg";
+import CardFilmUpcoming from "./card/CardFilmUpcoming";
+import axios from "axios";
 
 const Upcoming = () => {
+  const [movies, setMovies] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:8888/movies/upcoming")
+      .then((res) => res.data)
+      .then((res) => res.movies)
+      .then((data) => setMovies(data));
+  }, []);
+
   return (
     <div className="px-28 py-12">
       <div className="flex mb-8">
         <div className="flex grow font-bold text-xl">Upcoming Movies</div>
-        <Link className="text-[#5f2eea] font-bold tex-sm" to="">
+        <Link className="text-[#5f2eea] font-bold tex-sm" to="/list-movie">
           view all
         </Link>
       </div>
@@ -32,12 +40,9 @@ const Upcoming = () => {
       </div>
 
       <div className="flex flex-nowrap overflow-x-scroll py-5 overflow-y-hidden">
-        <CardFilmUpcoming movie={movie4} alt="Black Widow" title="Black Widow" genre="Action, Adventure, Sci-Fi" />
-        <CardFilmUpcoming movie={movie5} alt="The Witches" title="The Witches" genre="Action, Adventure, Sci-Fi" />
-        <CardFilmUpcoming movie={movie3} alt="John Wick" title="John Wick" genre="Action, Adventure, Sci-Fi" />
-        <CardFilmUpcoming movie={movie4} alt="Black Widow" title="Black Widow" genre="Action, Adventure, Sci-Fi" />
-        <CardFilmUpcoming movie={movie5} alt="The Witches" title="The Witches" genre="Action, Adventure, Sci-Fi" />
-        <CardFilmUpcoming movie={movie3} alt="John Wick" title="John Wick" genre="Action, Adventure, Sci-Fi" />
+        {movies.map((movie, i) => (
+          <CardFilmUpcoming key={i} movie={movie.picture} alt={movie.title} title={movie.title} genre={movie.genre} destination="/list-movie"/>
+        ))}
       </div>
     </div>
   );

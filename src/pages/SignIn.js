@@ -1,6 +1,6 @@
 import React from "react";
-import Background from "../components/Background";
-import FormSignIn from "../components/FormSignIn";
+import Background from "../components/background/Background";
+import FormSignIn from "../components/form/FormSignIn";
 
 const SignIn = () => {
   return (
