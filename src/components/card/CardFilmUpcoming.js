@@ -16,7 +16,7 @@ const CardFilmUpcoming = (props) => {
         </div>
         <div className="w-[150px]">
           <button className="w-full text-[#5f2eea] py-2 border-2 border-[#5f2eea] rounded ">
-            <Link to={props.destination}>Detail</Link>
+            <Link to={"/movie-detail/"+props.id}>Detail</Link>
           </button>
         </div>
       </div>

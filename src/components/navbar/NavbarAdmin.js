@@ -11,13 +11,13 @@ const NavbarAdmin = () => {
         <img className="w-32" src={navIcon} alt="icon logo" />
       </div>
       <div className="flex grow ml-4">
-        <Link className="mx-10" to="">
+        <Link className="mx-10" to="/dashboard">
           Dashboard
         </Link>
-        <Link className="mx-10" to="/">
+        <Link className="mx-10" to="/movie/manage">
           Manage Movie
         </Link>
-        <Link className="mx-10" to="/">
+        <Link className="mx-10" to="/movie/manageSchedule">
           Manage Schedule
         </Link>
       </div>
@@ -34,7 +34,9 @@ const NavbarAdmin = () => {
             <div>
               <Link to="/profile">Profile</Link>
             </div>
-            <div>Logout</div>
+            <div>
+              <Link to='/'>Logout</Link>
+            </div>
           </div>
         </div>
       </div>

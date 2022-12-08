@@ -26,7 +26,7 @@ const NowShowing = (props) => {
 
       <div className="flex flex-nowrap overflow-x-scroll my-10">
         {movies.map((movie, i) => (
-          <CardFilm destination="/movie-detail" key={i} desc={desc} movie={movie.picture} title={movie.title} genre={movie.genre} alt={movie.title} destination="/list-movie" />
+          <CardFilm id={movie.id} key={i} desc={desc} movie={movie.picture} title={movie.title} genre={movie.genre} alt={movie.title}/>
         ))}
       </div>
     </div>

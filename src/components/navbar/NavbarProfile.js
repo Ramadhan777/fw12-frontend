@@ -31,7 +31,9 @@ const NavbarProfile = () => {
             <div>
               <Link to="/profile">Profile</Link>
             </div>
-            <div>Logout</div>
+            <div>
+              <Link to='/'>Logout</Link>
+            </div>
           </div>
         </div>
       </div>

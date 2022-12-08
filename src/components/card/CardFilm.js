@@ -17,7 +17,7 @@ const CardFilm = (props) => {
           </div>
           <div>
             <button className="text-[#5f2eea] py-1 border-2 border-[#5f2eea] rounded w-full">
-              <Link to={props.destination}>Detail</Link>
+              <Link to={'/movie-detail/'+props.id}>Detail</Link>
             </button>
           </div>
         </div>

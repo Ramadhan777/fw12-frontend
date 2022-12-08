@@ -41,7 +41,7 @@ const Upcoming = () => {
 
       <div className="flex flex-nowrap overflow-x-scroll py-5 overflow-y-hidden">
         {movies.map((movie, i) => (
-          <CardFilmUpcoming key={i} movie={movie.picture} alt={movie.title} title={movie.title} genre={movie.genre} destination="/list-movie"/>
+          <CardFilmUpcoming key={i} id={movie.id} movie={movie.picture} alt={movie.title} title={movie.title} genre={movie.genre}/>
         ))}
       </div>
     </div>
