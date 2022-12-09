@@ -14,10 +14,12 @@ const ListMovieBody = () => {
       .then((res) => res.data)
       .then((res) => {
         pageAmount(res.pageInfo.totalData);
-        return res.movies})
+        return res.results})
       .then((data) => setMovies(data));
 
   }, [page]);
+
+  
 
   const pageAmount = (movie) => {
     const pageArr = [];
