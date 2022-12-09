@@ -13,7 +13,7 @@ const MovieDetail = () => {
   useEffect(() => {
     axios.get(`http://localhost:8888/movies/${id}`)
     .then(res => res.data)
-    .then(res => setMovie(res.movie[0]))
+    .then(res => setMovie(res.movie))
   }, [id])
 
   return (
