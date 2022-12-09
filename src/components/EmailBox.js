@@ -2,8 +2,8 @@ import React from "react";
 
 const EmailBox = () => {
   return (
-    <div className="flex flex-col px-28 my-20">
-      <div className="text-center shadow-lg shadow-[rgba(186, 186, 186, 0.3)] w-full rounded-lg">
+    <div className="flex flex-col px-14 md:px-28 my-20">
+      <div className="text-center shadow-lg w-full rounded-lg">
         <div className="py-5">
           <p className="text-[#4E4B66] text-2xl">Be the vanguard of the</p>
           <h1 className="text-[#5F2EEA] text-5xl font-bold">Moviegoers</h1>

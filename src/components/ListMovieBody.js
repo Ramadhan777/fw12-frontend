@@ -3,17 +3,32 @@ import axios from "axios";
 import Month from "./Month";
 import CardFilmUpcoming from "./card/CardFilmUpcoming";
 
-const ListMovieBody = (props) => {
+const ListMovieBody = () => {
   const [movies, setMovies] = useState([]);
   const [page, setPage] = useState(1);
+  const [amountPage, setAmountPage] = useState([]);
 
   useEffect(() => {
     axios
       .get("http://localhost:8888/movies?page=" + page)
       .then((res) => res.data)
-      .then((res) => res.movies)
+      .then((res) => {
+        pageAmount(res.pageInfo.totalData);
+        return res.movies})
       .then((data) => setMovies(data));
+
   }, [page]);
+
+  const pageAmount = (movie) => {
+    const pageArr = [];
+    const result = parseInt(movie) / 8;
+    const pageNum = Math.ceil(result);
+   
+    for (let i = 1; i <= pageNum; i++) {
+      pageArr.push(i);
+    }
+    setAmountPage(pageArr);
+  };
 
   return (
     <div className="pt-10 px-28 pb-5 bg-[#F5F6F8]">
@@ -56,27 +71,19 @@ const ListMovieBody = (props) => {
 
       <div className="flex flex-wrap items-center justify-center bg-white py-10 px-16 mt-5">
         {movies.map((movie, i) => (
-          <CardFilmUpcoming destination="/movie-detail" key={i} movie={movie.picture} title={movie.title} genre={movie.genre} alt={movie.title} />
+          <CardFilmUpcoming id={movie.id} destination="/movie-detail" key={i} movie={movie.picture} title={movie.title} genre={movie.genre} alt={movie.title} />
         ))}
       </div>
 
       <div className="flex justify-center mt-8 mb-3">
+        {amountPage.map(page => (
         <div>
-          <button onClick={() => setPage(() => 1)} className="bg-white text-[#4E4B66] py-1 px-3 mr-3 border-2 border-[#DEDEDE] rounded-lg hover:bg-[#5f2eea] hover:text-white focus:bg-[#5f2eea] focus:text-white">
-            1
+          <button onClick={() => setPage(() => page)} className="bg-white text-[#4E4B66] py-1 px-3 mr-3 border-2 border-[#DEDEDE] rounded-lg hover:bg-[#5f2eea] hover:text-white focus:bg-[#5f2eea] focus:text-white">
+            {page}
           </button>
         </div>
-        <div>
-          <button onClick={() => setPage(() => 2)} className="bg-white text-[#4E4B66] py-1 px-3 mr-3 border-2 border-[#DEDEDE] rounded-lg hover:bg-[#5f2eea] hover:text-white focus:bg-[#5f2eea] focus:text-white">
-            2
-          </button>
-        </div>
-        <div>
-          <button className="bg-white text-[#4E4B66] py-1 px-3 mr-3 border-2 border-[#DEDEDE] rounded-lg hover:bg-[#5f2eea] hover:text-white focus:bg-[#5f2eea] focus:text-white">3</button>
-        </div>
-        <div>
-          <button className="bg-white text-[#4E4B66] py-1 px-3 mr-3 border-2 border-[#DEDEDE] rounded-lg hover:bg-[#5f2eea] hover:text-white focus:bg-[#5f2eea] focus:text-white">4</button>
-        </div>
+        ))}
+        
       </div>
     </div>
   );

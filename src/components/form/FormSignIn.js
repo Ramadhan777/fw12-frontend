@@ -3,11 +3,14 @@ import { Link } from "react-router-dom";
 import FormButton from "./FormButton";
 import FormHeader from "./FormHeader";
 import FormInput from "./FormInput";
-
+import logo from "../../assets/images/Tickitz 2.svg"
 
 const FormSignIn = () => {
   return (
-    <div className="basis-12/12 md:basis-5/12 grow pt-20 px-8 lg:px-16">
+    <div className="basis-12/12 md:basis-5/12 grow pt-7 md:pt-20 px-8 lg:px-16">
+      <div>
+        <img className="block md:hidden mb-3" src={logo} alt="logo tickitz"/>
+      </div>
       <FormHeader title="Sign In"
         desc="Sign in with your data that you entered during your registration"/>
       <form>

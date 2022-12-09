@@ -1,10 +1,14 @@
 import React from "react";
 import FormButton from "./FormButton";
 import FormInput from "./FormInput";
+import logo from "../../assets/images/Tickitz 2.svg"
 
 const FormUpdatePassword = () => {
   return (
-    <div className="basis-12/12 lg:basis-5/12 grow pt-28 px-16">
+    <div className="basis-12/12 lg:basis-5/12 grow pt-20 lg:pt-28 px-16">
+      <div>
+        <img className="block lg:hidden mb-3" src={logo} alt="logo tickitz"/>
+      </div>
       <p className="text-xl font-bold pb-3">Fill your complete email</p>
       <p className="text-lg text-slate-400">set your new password</p>
 

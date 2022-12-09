@@ -3,10 +3,15 @@ import { Link } from "react-router-dom";
 import FormButton from "./FormButton";
 import FormHeader from "./FormHeader";
 import FormInput from "./FormInput";
+import logo from "../../assets/images/Tickitz 2.svg"
+
 
 const FormSignUp = () => {
   return (
-    <div className="basis-12/12 md:basis-5/12 grow pt-20 px-8 lg:px-16 pb-10 md:overflow-y-scroll">
+    <div className="basis-12/12 md:basis-5/12 grow pt-7 md:pt-20 px-8 lg:px-16 pb-10 md:overflow-y-scroll">
+      <div>
+        <img className="block md:hidden mb-3" src={logo} alt="logo tickitz"/>
+      </div>
       <FormHeader title="Sign Up" desc="Fill your additional details" />
       <form>
         <div className="flex flex-col pt-8 pb-5">

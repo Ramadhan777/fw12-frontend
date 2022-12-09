@@ -16,7 +16,7 @@ const Upcoming = () => {
   }, []);
 
   return (
-    <div className="px-28 py-12">
+    <div className="px-10 md:px-14 lg:px-28 py-12">
       <div className="flex mb-8">
         <div className="flex grow font-bold text-xl">Upcoming Movies</div>
         <Link className="text-[#5f2eea] font-bold tex-sm" to="/list-movie">

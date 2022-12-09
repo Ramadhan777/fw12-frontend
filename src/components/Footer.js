@@ -11,16 +11,16 @@ import youtube from "../assets/images/youtube.svg";
 
 const Footer = () => {
   return (
-    <footer className="flex flex-col px-28 pt-20 pb-10">
-      <div className="flex mb-10">
-        <div className="flex flex-col grow">
+    <footer className="flex flex-col px-10 md:px-14 lg:px-28 pt-20 pb-10">
+      <div className="flex flex-col min-[930px]:flex-row max-[930px]:items-center mb-10">
+        <div className="flex flex-col grow max-[930px]:items-center max-[930px]:text-center max-[930px]:mb-5">
           <img className="w-40 h-15 mb-5" src={footerIcon} alt="Tikckitz" />
-          <p className="text-[#6E7191]">
+          <p className="text-[#6E7191] ">
             Stop waiting in line. Buy tickets <br />
             conveniently, watch movies quietly.
           </p>
         </div>
-        <div className="flex flex-col grow">
+        <div className="flex flex-col grow max-[930px]:items-center max-[930px]:text-center max-[930px]:mb-5">
           <p className="mb-5 font-bold">Explore</p>
           <ul>
             <li>
@@ -35,9 +35,9 @@ const Footer = () => {
             </li>
           </ul>
         </div>
-        <div className="flex flex-col grow">
+        <div className="flex flex-col grow max-[930px]:items-center max-[930px]:mb-5" >
           <p className="mb-5 font-bold">Our Sponsor</p>
-          <ul>
+          <ul className="flex flex-col max-[930px]:items-center">
             <li>
               <img src={brand1} alt="ebv.id" />
             </li>
@@ -49,7 +49,7 @@ const Footer = () => {
             </li>
           </ul>
         </div>
-        <div className="flex flex-col grow">
+        <div className="flex flex-col grow max-[930px]:items-center">
           <p className="mb-5 font-bold">Follow us</p>
           <div>
             <div className="mb-4 flex justify-start ">
