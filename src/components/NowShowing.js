@@ -11,7 +11,7 @@ const NowShowing = (props) => {
     axios
       .get("http://localhost:8888/movies/now")
       .then((res) => res.data)
-      .then((res) => res.movies)
+      .then((res) => res.results)
       .then((data) => setMovies(data));
   }, []);
 

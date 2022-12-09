@@ -11,7 +11,7 @@ const Upcoming = () => {
     axios
       .get("http://localhost:8888/movies/upcoming")
       .then((res) => res.data)
-      .then((res) => res.movies)
+      .then((res) => res.results)
       .then((data) => setMovies(data));
   }, []);
 
