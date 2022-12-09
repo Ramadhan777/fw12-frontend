@@ -16,10 +16,7 @@ const ListMovieBody = () => {
         pageAmount(res.pageInfo.totalData);
         return res.results})
       .then((data) => setMovies(data));
-
   }, [page]);
-
-  
 
   const pageAmount = (movie) => {
     const pageArr = [];
@@ -29,6 +26,7 @@ const ListMovieBody = () => {
     for (let i = 1; i <= pageNum; i++) {
       pageArr.push(i);
     }
+    
     setAmountPage(pageArr);
   };
 

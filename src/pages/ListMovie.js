@@ -6,7 +6,7 @@ import NavbarProfile from '../components/navbar/NavbarProfile'
 const ListMovie = () => {
   return (
     <>
-        <NavbarProfile/>
+        <NavbarProfile />
         <ListMovieBody />
         <Footer />
     </>
@@ -14,3 +14,4 @@ const ListMovie = () => {
 }
 
 export default ListMovie
+// sDzcUN6HpaB9ezq2

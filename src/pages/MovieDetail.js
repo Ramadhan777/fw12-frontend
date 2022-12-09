@@ -16,8 +16,6 @@ const MovieDetail = () => {
     .then(res => setMovie(res.results))
   }, [id])
 
-  console.log(movie)
-
   return (
     <>
       <NavbarProfile />
