@@ -4,7 +4,7 @@ import logo from "../../assets/images/tickitz 1.svg";
 const BackgroundReset = () => {
   return (
     <div className="hidden lg:flex w-full h-full basis-7/12 bg-[url('../images/MaskGroup.png')] bg-cover">
-      <div className="flex grow flex-col bg-[#2b156bcc] pt-10 px-24">
+      <div className="flex grow flex-col bg-[#3140abcc] pt-10 px-24">
         <div className="logo">
           <img className="w-60" src={logo} alt="Logo Tickitz" />
         </div>

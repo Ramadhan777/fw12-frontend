@@ -1,4 +1,4 @@
-import React, { Profiler } from "react";
+import React from "react";
 import profileImage from "../assets/images/profile.svg";
 import { Link } from "react-router-dom";
 
@@ -9,7 +9,7 @@ const ProfileBody = () => {
         <div className="bg-white rounded-2xl">
           <div className="p-7 text-base text-[#4E4B66]">INFO</div>
           <div className="flex justify-center">
-            <img className="w-28 h-28" src={profileImage} alt="profile-image" />
+            <img className="w-28 h-28" src={profileImage} alt="profileImage" />
           </div>
           <div className="flex flex-col items-center m-5">
             <div className="text-xl text-[#14142B] font-bold">Jonas El Rodriduez</div>
@@ -17,14 +17,14 @@ const ProfileBody = () => {
           </div>
           <hr />
           <div className="p-7 text-center">
-            <button className="bg-[#5F2EEA] text-white rounded-2xl p-3 w-[70%]">Logout</button>
+            <button className="bg-[#1b30cf] text-white rounded-2xl p-3 w-[70%]">Logout</button>
           </div>
         </div>
       </div>
 
       <div className="basis-9/12 ">
         <div className="flex bg-white rounded-2xl w-full mb-10">
-          <div className="py-6 ml-10 mr-5 border-b-2 border-[#5F2EEA]">
+          <div className="py-6 ml-10 mr-5 border-b-2 border-[#1b30cf]">
             <Link to="">Account Setting</Link>
           </div>
           <div className="py-6 mx-5 text-[#AAAAAA]">
@@ -96,7 +96,7 @@ const ProfileBody = () => {
         </div>
 
         <div>
-          <button className="bg-[#5F2EEA] text-white w-[40%] my-5 py-4 rounded-2xl">Update Changes</button>
+          <button className="bg-[#1b30cf] text-white w-[40%] my-5 py-4 rounded-2xl">Update Changes</button>
         </div>
 
         <div className="flex flex-col bg-white rounded-3xl pt-10 px-7">
@@ -135,7 +135,7 @@ const ProfileBody = () => {
         </div>
 
         <div>
-          <button className="bg-[#5F2EEA] text-white w-[40%] my-5 py-4 rounded-2xl">Update Changes</button>
+          <button className="bg-[#1b30cf] text-white w-[40%] my-5 py-4 rounded-2xl">Update Changes</button>
         </div>
       </div>
     </div>

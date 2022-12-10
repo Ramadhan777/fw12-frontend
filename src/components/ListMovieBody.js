@@ -78,7 +78,7 @@ const ListMovieBody = () => {
       <div className="flex justify-center mt-8 mb-3">
         {amountPage.map(page => (
         <div>
-          <button onClick={() => setPage(() => page)} className="bg-white text-[#4E4B66] py-1 px-3 mr-3 border-2 border-[#DEDEDE] rounded-lg hover:bg-[#5f2eea] hover:text-white focus:bg-[#5f2eea] focus:text-white">
+          <button onClick={() => setPage(() => page)} className="bg-white text-[#4E4B66] py-1 px-3 mr-3 border-2 border-[#DEDEDE] rounded-lg hover:bg-[#1b30cf] hover:text-white focus:bg-[#1b30cf] focus:text-white">
             {page}
           </button>
         </div>

@@ -78,18 +78,18 @@ const PaymentBody = () => {
 
             <div className="text-center py-3">
               <span className="text-[#6E7191]">Pay via cash.</span>
-              <span className="text-[#5F2EEA]"> See how it work</span>
+              <span className="text-[#1b30cf]"> See how it work</span>
             </div>
           </div>
 
           <div className="flex pt-10">
             <div className="flex grow">
-              <button className="bg-[#F5F6F8] px-10 py-3 text-base text-[#5F2EEA] border-2 border-[#5F2EEA] rounded">
+              <button className="bg-[#F5F6F8] px-10 py-3 text-base text-[#1b30cf] border-2 border-[#1b30cf] rounded">
                 <Link to="/movie-order">Previous step</Link>
                 </button>
             </div>
             <div>
-              <button className="bg-[#5F2EEA] px-12 py-3 text-base text-white border-2 border-[#5F2EEA] rounded">
+              <button className="bg-[#1b30cf] px-12 py-3 text-base text-white border-2 border-[#1b30cf] rounded">
                 <Link to="/movie-payment">Pay your order</Link>
               </button>
             </div>

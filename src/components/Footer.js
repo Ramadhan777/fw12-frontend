@@ -1,5 +1,5 @@
 import React from "react";
-import footerIcon from "../assets/images/Tickitz 2.svg";
+import footerIcon from "../assets/images/Tiku.svg";
 import brand1 from "../assets/images/brand-1.svg";
 import brand2 from "../assets/images/brand-2.svg";
 import brand3 from "../assets/images/brand-3.svg";

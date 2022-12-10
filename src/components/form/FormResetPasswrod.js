@@ -19,7 +19,7 @@ const FormResetPassword = () => {
         </div>
 
         <div className="flex flex-col items-center">
-          <button className="bg-[#5f2eea] w-full py-4 rounded text-white text-center" type="submit">
+          <button className="bg-[#1b30cf] w-full py-4 rounded text-white text-center" type="submit">
             <Link to="/update-password">Send</Link>
           </button>
         </div>

@@ -14,7 +14,7 @@ const CardFilmAdmin = (props) => {
           </div>
         </div>
         <div className="w-[150px] mb-5">
-          <button className="w-full text-[#5f2eea] py-2 border-2 border-[#5f2eea] rounded ">
+          <button className="w-full text-[#1b30cf] py-2 border-2 border-[#1b30cf] rounded ">
             Update
           </button>
         </div>

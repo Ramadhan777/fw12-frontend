@@ -32,7 +32,7 @@ const CardTicketAdmin = (props) => {
 
               <div className="flex gap-3 p-5">
                 <div className="flex grow">
-                  <button className="text-sm w-full py-2 border-[1px] border-[#5F2EEA] text-[#5F2EEA] rounded">Update</button>
+                  <button className="text-sm w-full py-2 border-[1px] border-[#1b30cf] text-[#1b30cf] rounded">Update</button>
                 </div>
                 <div className="flex grow">
                   <button className="text-sm w-full py-2 border-[1px] border-[#ED2E7E] text-[#ED2E7E] rounded">Delete</button>

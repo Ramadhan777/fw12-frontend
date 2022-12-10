@@ -9,7 +9,7 @@ const Ticket = (props) => {
 
         <div className="flex mx-10 border-2 border-[#DEDEDE] rounded-2xl">
           <div className="flex flex-col basis-8/12">
-            <div className="h-15 w-full flex items-center bg-[#5F2EEA] rounded-tl-2xl">
+            <div className="h-15 w-full flex items-center bg-[#1b30cf] rounded-tl-2xl">
               <div className="flex grow py-3 pl-10">
                 <img className="h-10 w-32" src={logo} alt="logo" />
               </div>
@@ -55,7 +55,7 @@ const Ticket = (props) => {
           </div>
 
           <div className="flex flex-col basis-4/12 border-dashed border-l-2 border-[#DEDEDE]">
-            <div className="h-15 w-full flex justify-center bg-[#5F2EEA] rounded-tr-2xl">
+            <div className="h-15 w-full flex justify-center bg-[#1b30cf] rounded-tr-2xl">
               <div className="flex py-3">
                 <img className="h-10 w-32" src={logo} alt="logo" />
               </div>

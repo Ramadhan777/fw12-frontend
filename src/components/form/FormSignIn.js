@@ -25,13 +25,13 @@ const FormSignIn = () => {
           <div>
             <p className="pt-5 pb-3">
               <span className="text-slate-400">Forgot your password? </span>{" "}
-              <Link className="text-[#5f2eea] font-medium underline underline-offset-4" to="/reset-password">
+              <Link className="text-[#1b30cf] font-medium underline underline-offset-4" to="/reset-password">
                 Reset now
               </Link>
             </p>
             <p>
               <span className="text-slate-400">Don’t have an account? </span>{" "}
-              <Link className="text-[#5f2eea] font-medium underline underline-offset-4" to="/sign-up">
+              <Link className="text-[#1b30cf] font-medium underline underline-offset-4" to="/sign-up">
                 Sign Up
               </Link>
             </p>

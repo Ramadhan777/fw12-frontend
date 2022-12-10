@@ -82,7 +82,7 @@ const ManageMovieScheduleBody = () => {
                 </label>
                 <div className="grid grid-cols-4 text-sm place-content-center items-center">
                   <div className="my-2">
-                    <button className="w-8/12 text-[#5F2EEA] border-2 border-[#5F2EEA] rounded-xl text-lg">+</button>
+                    <button className="w-8/12 text-[#1b30cf] border-2 border-[#1b30cf] rounded-xl text-lg">+</button>
                   </div>
                   <div className="my-2">08:30am</div>
                   <div className="my-2">10:30pm</div>
@@ -98,10 +98,10 @@ const ManageMovieScheduleBody = () => {
 
           <div className="flex mt-10 gap-5 justify-end">
             <div>
-              <button className="py-2 px-16 text-[#5F2EEA] border-2 border-[#5F2EEA] bg-white rounded">Reset</button>
+              <button className="py-2 px-16 text-[#1b30cf] border-2 border-[#1b30cf] bg-white rounded">Reset</button>
             </div>
             <div>
-              <button className="py-2 px-16 text-white border-2 border-[#5F2EEA] bg-[#5F2EEA] rounded">Submit</button>
+              <button className="py-2 px-16 text-white border-2 border-[#1b30cf] bg-[#1b30cf] rounded">Submit</button>
             </div>
           </div>
         </div>
@@ -148,16 +148,16 @@ const ManageMovieScheduleBody = () => {
 
         <div className="flex justify-center mt-8">
           <div>
-            <button className="bg-white text-[#4E4B66] py-1 px-3 mr-3 border-2 border-[#DEDEDE] rounded-lg hover:bg-[#5f2eea] hover:text-white focus:bg-[#5f2eea] focus:text-white">1</button>
+            <button className="bg-white text-[#4E4B66] py-1 px-3 mr-3 border-2 border-[#DEDEDE] rounded-lg hover:bg-[#1b30cf] hover:text-white focus:bg-[#1b30cf] focus:text-white">1</button>
           </div>
           <div>
-            <button className="bg-white text-[#4E4B66] py-1 px-3 mr-3 border-2 border-[#DEDEDE] rounded-lg hover:bg-[#5f2eea] hover:text-white focus:bg-[#5f2eea] focus:text-white">2</button>
+            <button className="bg-white text-[#4E4B66] py-1 px-3 mr-3 border-2 border-[#DEDEDE] rounded-lg hover:bg-[#1b30cf] hover:text-white focus:bg-[#1b30cf] focus:text-white">2</button>
           </div>
           <div>
-            <button className="bg-white text-[#4E4B66] py-1 px-3 mr-3 border-2 border-[#DEDEDE] rounded-lg hover:bg-[#5f2eea] hover:text-white focus:bg-[#5f2eea] focus:text-white">3</button>
+            <button className="bg-white text-[#4E4B66] py-1 px-3 mr-3 border-2 border-[#DEDEDE] rounded-lg hover:bg-[#1b30cf] hover:text-white focus:bg-[#1b30cf] focus:text-white">3</button>
           </div>
           <div>
-            <button className="bg-white text-[#4E4B66] py-1 px-3 mr-3 border-2 border-[#DEDEDE] rounded-lg hover:bg-[#5f2eea] hover:text-white focus:bg-[#5f2eea] focus:text-white">4</button>
+            <button className="bg-white text-[#4E4B66] py-1 px-3 mr-3 border-2 border-[#DEDEDE] rounded-lg hover:bg-[#1b30cf] hover:text-white focus:bg-[#1b30cf] focus:text-white">4</button>
           </div>
         </div>
       </div>

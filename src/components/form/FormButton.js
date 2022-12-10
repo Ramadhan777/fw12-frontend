@@ -6,7 +6,7 @@ const FormButton = (props) => {
 
   return (
     <>
-      <button className="bg-[#5f2eea] w-full py-4 rounded-2xl text-white text-center" type="submit">
+      <button className="bg-[#1b30cf] w-full py-4 rounded-2xl text-white text-center" type="submit">
         <Link to={path}>{buttonName}</Link>
       </button>
     </>

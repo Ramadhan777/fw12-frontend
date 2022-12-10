@@ -1,5 +1,5 @@
 import React from "react";
-import navIcon from "../../assets/images/Tickitz 2.svg";
+import navIcon from "../../assets/images/Tiku.svg";
 import { Link } from "react-router-dom";
 import searchIcon from "../../assets/images/search.svg";
 import profileImage from "../../assets/images/profile.svg";

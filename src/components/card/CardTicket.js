@@ -32,7 +32,7 @@ const CardTicket = (props) => {
       </div>
 
       <div className="p-5">
-        <button className="w-full py-2 bg-[#5F2EEA] text-white rounded">
+        <button className="w-full py-2 bg-[#1b30cf] text-white rounded">
             <Link to="/movie-order">Book now</Link>
         </button>
       </div>

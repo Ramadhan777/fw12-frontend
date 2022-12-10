@@ -35,7 +35,7 @@ const FormSignUp = () => {
           <div>
             <p className="pt-5 pb-3">
               <span className="text-slate-400">Already have account </span>{" "}
-              <Link className="text-[#5f2eea] font-medium underline underline-offset-4" to="/sign-in">
+              <Link className="text-[#1b30cf] font-medium underline underline-offset-4" to="/sign-in">
                 Sign in
               </Link>
             </p>

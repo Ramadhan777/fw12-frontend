@@ -7,7 +7,7 @@ const Hero = () => {
       <div className="flex grow md:basis-6/12 items-center justify-center">
         <div className="flex flex-col">
           <div className="text-slate-400 text-xl pb-5">Nearest Cinema, Newest Movie,</div>
-          <div className="text-[#5f2eea] text-5xl font-bold">Find out now!</div>
+          <div className="text-[#1b30cf] text-5xl font-bold">Find out now!</div>
         </div>
       </div>
 

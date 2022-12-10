@@ -34,7 +34,7 @@ const ShowtimeAndTicket = () => {
       <div className="p-5">
         <hr />
         <div>
-            <Link className="text-[#5F2EEA] bg-[#F5F6F8] py-2 px-4 relative bottom-3">view more</Link>
+            <Link className="text-[#1b30cf] bg-[#F5F6F8] py-2 px-4 relative bottom-3">view more</Link>
         </div>
       </div>
     </div>

@@ -11,7 +11,7 @@ const MovieOrderBody = () => {
           <div className="flex items-center bg-white p-8 rounded-md">
             <div className="flex grow text-xl font-bold rounded-md">Spider-Man: Homecoming</div>
             <div>
-              <button className="text-sm py-3 px-6 rounded-md font-bold text-[#5F2EEA] bg-[#EFF0F7]">Change Movie</button>
+              <button className="text-sm py-3 px-6 rounded-md font-bold text-[#1b30cf] bg-[#EFF0F7]">Change Movie</button>
             </div>
           </div>
         </div>
@@ -45,9 +45,9 @@ const MovieOrderBody = () => {
                 <div className="bg-[#d6d8e7] w-[30px] h-[30px] rounded"></div>
                 <div className="bg-[#d6d8e7] w-[30px] h-[30px] rounded"></div>
                 <div className="bg-[#d6d8e7] w-[30px] h-[30px] rounded"></div>
-                <div className="bg-[#5F2EEA] w-[30px] h-[30px] rounded"></div>
-                <div className="bg-[#5F2EEA] w-[30px] h-[30px] rounded"></div>
-                <div className="bg-[#5F2EEA] w-[30px] h-[30px] rounded"></div>
+                <div className="bg-[#1b30cf] w-[30px] h-[30px] rounded"></div>
+                <div className="bg-[#1b30cf] w-[30px] h-[30px] rounded"></div>
+                <div className="bg-[#1b30cf] w-[30px] h-[30px] rounded"></div>
                 <div className="bg-[#d6d8e7] w-[30px] h-[30px] rounded"></div>
                 <div className="w-[30px] h-[30px] rounded">D</div>
                 <div className="bg-[#d6d8e7] w-[30px] h-[30px] rounded"></div>
@@ -158,7 +158,7 @@ const MovieOrderBody = () => {
                   <div className="ml-3 mr-6">Available</div>
                 </div>
                 <div className="flex">
-                  <div className="bg-[#5F2EEA] w-[30px] h-[30px] rounded"></div>
+                  <div className="bg-[#1b30cf] w-[30px] h-[30px] rounded"></div>
                   <div className="ml-3 mr-6">Selected</div>
                 </div>
                 <div className="flex">
@@ -172,10 +172,10 @@ const MovieOrderBody = () => {
 
         <div className="flex pt-10">
           <div className="flex grow">
-            <button className="bg-[#F5F6F8] px-10 py-3 text-base text-[#5F2EEA] border-2 border-[#5F2EEA] rounded">Change your movie</button>
+            <button className="bg-[#F5F6F8] px-10 py-3 text-base text-[#1b30cf] border-2 border-[#1b30cf] rounded">Change your movie</button>
           </div>
           <div>
-            <button className="bg-[#5F2EEA] px-12 py-3 text-base text-white border-2 border-[#5F2EEA] rounded">
+            <button className="bg-[#1b30cf] px-12 py-3 text-base text-white border-2 border-[#1b30cf] rounded">
               <Link to="/movie-payment">Checkout Now</Link>
             </button>
           </div>
@@ -218,7 +218,7 @@ const MovieOrderBody = () => {
 
             <div className="px-5 py-8 flex">
               <div className="text-lg flex grow font-bold">Total Payment</div>
-              <div className="text-2xl text-[#5F2EEA] font-bold">$30</div>
+              <div className="text-2xl text-[#1b30cf] font-bold">$30</div>
             </div>
           </div>
         </div>

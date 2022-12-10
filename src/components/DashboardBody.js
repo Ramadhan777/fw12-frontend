@@ -30,10 +30,10 @@ const DashboardBody = () => {
                     </select>
                 </div>
                 <div className="mb-5">
-                    <button className="w-full py-3 bg-[#5F2EEA] text-white border-2 border-[#5F2EEA]">Filter</button>
+                    <button className="w-full py-3 bg-[#1b30cf] text-white border-2 border-[#1b30cf]">Filter</button>
                 </div>
                 <div>
-                    <button className="w-full py-3 bg-white text-[#5F2EEA] border-2 border-[#5F2EEA]">Reset</button>
+                    <button className="w-full py-3 bg-white text-[#1b30cf] border-2 border-[#1b30cf]">Reset</button>
                 </div>
             </div>
         </div>

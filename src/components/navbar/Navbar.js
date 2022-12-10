@@ -1,5 +1,5 @@
 import React from "react";
-import navIcon from "../../assets/images/Tickitz 2.svg";
+import navIcon from "../../assets/images/Tiku.svg";
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
@@ -17,7 +17,7 @@ const Navbar = () => {
         </Link>
       </div>
       <div>
-        <button className="bg-[#5f2eea] px-8 py-2 rounded-md text-white">
+        <button className="bg-[#1b30cf] px-8 py-2 rounded-md text-white">
           <Link className="text-sm" to="/sign-in">
             Sign Up
           </Link>
