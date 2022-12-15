@@ -4,10 +4,12 @@ import FormButton from "./FormButton";
 import FormHeader from "./FormHeader";
 import FormInput from "./FormInput";
 import logo from "../../assets/images/Tiku.svg";
-import axios from "axios";
+import { useDispatch } from "react-redux";
+import { registerUserAction } from "../../redux/actions/auth";
 
 const FormSignUp = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const register = (event) => {
     event.preventDefault();
@@ -17,9 +19,13 @@ const FormSignUp = () => {
     const phoneNumber = event.target.phoneNumber.value;
     const password = event.target.password.value;
 
-    axios.post('https://fw12-backend-eta.vercel.app/auth/register', {
-      firstName, lastName, phoneNumber, email, password
-    }).then(res => navigate('/sign-in',  { state: "Register berhasil, silahkan login" }))
+    const cb = () => {
+      navigate('/')
+    }
+
+    dispatch(registerUserAction({
+      firstName, lastName, phoneNumber, email, password, cb
+    }))
   };
 
   return (

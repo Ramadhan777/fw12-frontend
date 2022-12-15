@@ -9,6 +9,11 @@ import {logout as logoutAction} from '../../redux/reducers/auth'
 const NavbarProfile = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
+
+  const logout = () => {
+    dispatch(logoutAction());
+    navigate('/sign-in')
+  }
   return ( 
     <nav className="nav-bar flex py-5 px-28 items-center">
       <div>
@@ -36,7 +41,7 @@ const NavbarProfile = () => {
              Profile
             </button>
             <div>
-              <button type="button" onClick={() => dispatch(logoutAction())}>
+              <button type="button" onClick={() => logout()}>
               Logout
               </button>
             </div>

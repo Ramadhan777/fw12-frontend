@@ -36,8 +36,18 @@ const ListMovieBody = () => {
     const searchInput = document.querySelector(".search-input");
     setSearch(searchInput.value);
     setPage(1);
-    console.log(search);
   };
+
+  const searchMovieByGenre = (genre) => {
+    axios
+      .get(`https://fw12-backend-eta.vercel.app/movies/genre?page=${page}&search=${genre}`)
+      .then((res) => res.data)
+      .then((res) => {
+        pageAmount(res.pageInfo.totalData);
+        return res.results;
+      })
+      .then((data) => setMovies(data))
+  }
 
   return (
     <div className="pt-10 px-28 pb-5 bg-[#F5F6F8]">
@@ -46,11 +56,11 @@ const ListMovieBody = () => {
           <div className="flex grow text-2xl font-bold">List Movie</div>
           <div className="flex flex-col items-end gap-3">
             <div>
-              <select className="rounded-2xl py-3 pl-2 text-sm bg-[#fcfdfe] border-2 border-[#DEDEDE]">
-                <option className="hidden">Sort</option>
+              <select onClick={(e) => searchMovieByGenre(e.target.value)} className="rounded-2xl py-3 pl-2 text-sm bg-[#fcfdfe] border-2 border-[#DEDEDE]">
+                <option className="hidden" value="">Sort</option>
                 <option value="Action">Action</option>
                 <option value="Sci-Fi">Sci-Fi</option>
-                <option value="Horror">Horror</option>
+                <option value="Family">Family</option>
                 <option value="Adventure">Adventure</option>
                 <option value="Romance">Romance</option>
                 <option value="Comedy">Comedy</option>
