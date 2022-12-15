@@ -11,7 +11,7 @@ const MovieDetail = () => {
   const { id } = useParams()
 
   useEffect(() => {
-    axios.get(`http://localhost:8888/movies/${id}`)
+    axios.get(`https://fw12-backend-eta.vercel.app/movies/${id}`)
     .then(res => res.data)
     .then(res => setMovie(res.results))
   }, [id])

@@ -1,6 +1,6 @@
 import React from 'react'
 import BackgroundReset from '../components/background/BackgroundReset'
-import FormResetPassword from '../components/form/FormResetPasswrod'
+import FormResetPassword from '../components/form/FormResetPassword'
 
 const ResetPassword = () => {
   return (

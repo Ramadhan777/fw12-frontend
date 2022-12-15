@@ -9,7 +9,7 @@ const Upcoming = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8888/movies/upcoming")
+      .get("https://fw12-backend-eta.vercel.app/movies/upcoming")
       .then((res) => res.data)
       .then((res) => res.results)
       .then((data) => setMovies(data));

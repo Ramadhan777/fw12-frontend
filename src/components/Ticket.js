@@ -1,7 +1,12 @@
 import React from "react";
 import logo from "../assets/images/tickitz 1.svg";
 
-const Ticket = (props) => {
+class Ticket extends React.Component {
+  constructor(props) {
+    super(props)
+  }
+
+  render(){
   return (
     <div className="px-36 py-10 bg-[#E5E5E5]">
       <div className="bg-white pt-12 px-10 pb-20 text-center">
@@ -61,11 +66,11 @@ const Ticket = (props) => {
               </div>
             </div>
             <div className="flex items-center justify-center h-full">
-              {props.QRcode ? (
-                <img src={props.QRcode} alt="" />
+              {this.props.QRcode ? (
+                <img src={this.props.QRcode} alt="" />
               ) : (
                 <div className="py-20 px-10 text-center bg-[#F5F6F8]">
-                  <div className="max-w-[120px] font-bold">{props.status}</div>
+                  <div className="max-w-[120px] font-bold">{this.props.status}</div>
                 </div>
               )}
             </div>
@@ -73,7 +78,7 @@ const Ticket = (props) => {
         </div>
       </div>
     </div>
-  );
+  )};
 };
 
 export default Ticket;

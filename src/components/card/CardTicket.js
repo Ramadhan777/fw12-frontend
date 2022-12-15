@@ -1,7 +1,32 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+
+import { useNavigate, useParams } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { chooseMovie as chooseMovieAction } from "../../redux/reducers/transaction";
 
 const CardTicket = (props) => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate()
+  const [selectedTime, setSelectedTime] = useState("");
+  const [selectedCinema, setSelectedCinema] = useState(null);
+  const { id } = useParams();
+
+  const selectTime = (time, cinemaId) => {
+    setSelectedTime(time);
+    setSelectedCinema(cinemaId);
+  };
+
+  const book = () => {
+    dispatch(chooseMovieAction({
+      movieId:  id,
+      cinemaId: selectedCinema,
+      bookingDate: props.date,
+      bookingTime: selectedTime
+    }
+    ))
+    navigate('/movie-order')
+  };
+
   return (
     <div className="bg-white flex flex-col rounded-md mx-4 mb-8">
       <div className="flex items-center p-7">
@@ -9,7 +34,7 @@ const CardTicket = (props) => {
           <img className="w-[100px] h-[40px]" src={props.image} alt="ebv.id" />
         </div>
         <div className="text-start">
-          <div className="text-2xl font-bold">ebv.id</div>
+          <div className="text-2xl font-bold">{props.name}</div>
           <div className="text-xs text-[#6E7191] max-w-[140px]">Whatever street No.12, South Purwokerto</div>
         </div>
       </div>
@@ -17,13 +42,27 @@ const CardTicket = (props) => {
       <hr />
 
       <div className="grid grid-cols-4 p-5">
-        <div className="text-xs text-[#6E7191] mb-3">08:30am</div>
-        <div className="text-xs text-[#6E7191] mb-3">10:30pm</div>
-        <div className="text-xs text-[#6E7191] mb-3">12:00pm</div>
-        <div className="text-xs text-[#6E7191] mb-3">02:00pm</div>
-        <div className="text-xs text-[#6E7191] mb-3">04:30pm</div>
-        <div className="text-xs text-[#6E7191] mb-3">07:00pm</div>
-        <div className="text-xs text-[#6E7191] mb-3">08:30pm</div>
+        <button onClick={(e) => selectTime(e.target.innerText, props.cinemaId)} className={`text-xs text-[#6E7191] mb-3 hover:text-[#1b30cf] focus:text-[#1b30cf] focus:font-bold`}>
+          08:30am
+        </button>
+        <button onClick={(e) => selectTime(e.target.innerText, props.cinemaId)} className={`text-xs text-[#6E7191] mb-3 hover:text-[#1b30cf] focus:text-[#1b30cf] focus:font-bold`}>
+          10:30pm
+        </button>
+        <button onClick={(e) => selectTime(e.target.innerText, props.cinemaId)} className={`text-xs text-[#6E7191] mb-3 hover:text-[#1b30cf] focus:text-[#1b30cf] focus:font-bold`}>
+          12:00pm
+        </button>
+        <button onClick={(e) => selectTime(e.target.innerText, props.cinemaId)} className={`text-xs text-[#6E7191] mb-3 hover:text-[#1b30cf] focus:text-[#1b30cf] focus:font-bold`}>
+          02:00pm
+        </button>
+        <button onClick={(e) => selectTime(e.target.innerText, props.cinemaId)} className={`text-xs text-[#6E7191] mb-3 hover:text-[#1b30cf] focus:text-[#1b30cf] focus:font-bold`}>
+          04:30pm
+        </button>
+        <button onClick={(e) => selectTime(e.target.innerText, props.cinemaId)} className={`text-xs text-[#6E7191] mb-3 hover:text-[#1b30cf] focus:text-[#1b30cf] focus:font-bold`}>
+          07:00pm
+        </button>
+        <button onClick={(e) => selectTime(e.target.innerText, props.cinemaId)} className={`text-xs text-[#6E7191] mb-3 hover:text-[#1b30cf] focus:text-[#1b30cf] focus:font-bold`}>
+          08:30pm
+        </button>
       </div>
 
       <div className="flex px-5">
@@ -32,8 +71,8 @@ const CardTicket = (props) => {
       </div>
 
       <div className="p-5">
-        <button className="w-full py-2 bg-[#1b30cf] text-white rounded">
-            <Link to="/movie-order">Book now</Link>
+        <button onClick={() => book()} className="w-full py-2 bg-[#1b30cf] text-white rounded">
+          Book now
         </button>
       </div>
     </div>

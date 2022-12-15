@@ -2,7 +2,7 @@ import React from "react";
 import profileImage from "../assets/images/profile.svg";
 import { Link } from "react-router-dom";
 
-const ProfileBody = () => {
+const ProfileBody = ({ profile }) => {
   return (
     <div className="flex bg-[#E5E5E5] px-28 py-10">
       <div className="basis-3/12 mr-10">
@@ -12,7 +12,9 @@ const ProfileBody = () => {
             <img className="w-28 h-28" src={profileImage} alt="profileImage" />
           </div>
           <div className="flex flex-col items-center m-5">
-            <div className="text-xl text-[#14142B] font-bold">Jonas El Rodriduez</div>
+            <div className="text-xl text-[#14142B] font-bold">
+              {profile.firstName} {profile.lastName}
+            </div>
             <div className="text-sm text-[#4E4B66]">Movigoers</div>
           </div>
           <hr />
@@ -47,7 +49,7 @@ const ProfileBody = () => {
                   name="firstName"
                   id="firstName"
                   type="text"
-                  placeholder="Jonas"
+                  placeholder={profile.firstName}
                 />
               </div>
               <div className="flex grow flex-col ml-3 ">
@@ -60,7 +62,7 @@ const ProfileBody = () => {
                   name="laststName"
                   id="laststName"
                   type="text"
-                  placeholder="El Rodriguez"
+                  placeholder={profile.lastName}
                 />
               </div>
             </div>
@@ -75,7 +77,7 @@ const ProfileBody = () => {
                   name="email"
                   id="email"
                   type="email"
-                  placeholder="jonasrodrigu123@gmail.com"
+                  placeholder={profile.email}
                 />
               </div>
               <div className="flex grow flex-col ml-3 ">
@@ -88,7 +90,7 @@ const ProfileBody = () => {
                   name="phoneNumber"
                   id="phoneNumber"
                   type="text"
-                  placeholder="+62 81443874"
+                  placeholder={profile.phoneNumber}
                 />
               </div>
             </div>

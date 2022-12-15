@@ -1,11 +1,15 @@
 import React from "react";
 import navIcon from "../../assets/images/Tiku.svg";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import searchIcon from "../../assets/images/search.svg";
 import profileImage from "../../assets/images/profile.svg";
+import { useDispatch } from "react-redux";
+import {logout as logoutAction} from '../../redux/reducers/auth'
 
 const NavbarProfile = () => {
-  return (
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+  return ( 
     <nav className="nav-bar flex py-5 px-28 items-center">
       <div>
         <img className="w-32" src={navIcon} alt="icon logo" />
@@ -28,11 +32,13 @@ const NavbarProfile = () => {
         <div className="group relative">
           <img src={profileImage} alt="profile" />
           <div className="hidden group-hover:block absolute right-0 border-2 border-[#dedede] bg-[#FCFDFE] py-2 pl-4 pr-8">
+            <button onClick={() => navigate('/profile')}>
+             Profile
+            </button>
             <div>
-              <Link to="/profile">Profile</Link>
-            </div>
-            <div>
-              <Link to='/'>Logout</Link>
+              <button type="button" onClick={() => dispatch(logoutAction())}>
+              Logout
+              </button>
             </div>
           </div>
         </div>

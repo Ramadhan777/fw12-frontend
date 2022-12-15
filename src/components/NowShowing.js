@@ -9,14 +9,14 @@ const NowShowing = (props) => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8888/movies/now")
+      .get("https://fw12-backend-eta.vercel.app/movies/now")
       .then((res) => res.data)
       .then((res) => res.results)
       .then((data) => setMovies(data));
   }, []);
 
   return (
-    <div className="bg-[#F5F6F8] px-10 md:px-14 lg:px-28 py-12">
+    <div className="bg-[#F5F6F8] h-[550px] px-10 md:px-14 lg:px-28 py-12">
       <div className="flex">
         <div className="flex grow text-[#1b30cf] font-bold text-xl underline underline-offset-8">Now Showing</div>
         <Link className="text-[#1b30cf] font-bold tex-sm" to="/list-movie">

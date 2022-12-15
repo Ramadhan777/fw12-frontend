@@ -41,7 +41,7 @@ const MovieDetailDesc = (props) => {
               </div>
               <div className="flex flex-col">
                 <span className="text-sm text-[#8692A6] mb-1">Casts</span>
-                <span>Tom Holland, Michael Keaton, Robert Downey Jr.., ...</span>
+                <span>{movie.casts}</span>
               </div>
             </div>
           </div>

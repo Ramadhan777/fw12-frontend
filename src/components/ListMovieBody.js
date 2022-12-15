@@ -7,35 +7,44 @@ const ListMovieBody = () => {
   const [movies, setMovies] = useState([]);
   const [page, setPage] = useState(1);
   const [amountPage, setAmountPage] = useState([]);
+  const [search, setSearch] = useState("");
 
   useEffect(() => {
     axios
-      .get("http://localhost:8888/movies?page=" + page)
+      .get(`https://fw12-backend-eta.vercel.app/movies?page=${page}&search=${search}`)
       .then((res) => res.data)
       .then((res) => {
         pageAmount(res.pageInfo.totalData);
-        return res.results})
+        return res.results;
+      })
       .then((data) => setMovies(data));
-  }, [page]);
+  }, [page, search]);
 
   const pageAmount = (movie) => {
     const pageArr = [];
     const result = parseInt(movie) / 8;
     const pageNum = Math.ceil(result);
-   
+
     for (let i = 1; i <= pageNum; i++) {
       pageArr.push(i);
     }
-    
+
     setAmountPage(pageArr);
+  };
+
+  const searchMovie = () => {
+    const searchInput = document.querySelector(".search-input");
+    setSearch(searchInput.value);
+    setPage(1);
+    console.log(search);
   };
 
   return (
     <div className="pt-10 px-28 pb-5 bg-[#F5F6F8]">
       <div>
-        <div className="flex">
+        <div className="flex justify-center items-center">
           <div className="flex grow text-2xl font-bold">List Movie</div>
-          <div className="flex">
+          <div className="flex flex-col items-end gap-3">
             <div>
               <select className="rounded-2xl py-3 pl-2 text-sm bg-[#fcfdfe] border-2 border-[#DEDEDE]">
                 <option className="hidden">Sort</option>
@@ -47,8 +56,11 @@ const ListMovieBody = () => {
                 <option value="Comedy">Comedy</option>
               </select>
             </div>
-            <div>
-              <input className="py-3 pl-3 pr-5 text-xs rounded-2xl bg-[#fcfdfe] focus:outline-none border-2 border-[#DEDEDE]" type="search" name="search" id="search" placeholder="Search Movie Name ..." />
+            <div className="flex gap-3">
+              <input className="search-input py-3 pl-3 pr-5 text-xs rounded-2xl bg-[#fcfdfe] focus:outline-none border-2 border-[#DEDEDE]" type="search" name="search" id="search" placeholder="Search Movie Name ..." />
+              <div className="bg-[#1b30cf] text-white py-3 px-6 flex justify-center items-center rounded-xl">
+                <button onClick={searchMovie}>Search</button>
+              </div>
             </div>
           </div>
         </div>
@@ -76,14 +88,13 @@ const ListMovieBody = () => {
       </div>
 
       <div className="flex justify-center mt-8 mb-3">
-        {amountPage.map(page => (
-        <div>
-          <button onClick={() => setPage(() => page)} className="bg-white text-[#4E4B66] py-1 px-3 mr-3 border-2 border-[#DEDEDE] rounded-lg hover:bg-[#1b30cf] hover:text-white focus:bg-[#1b30cf] focus:text-white">
-            {page}
-          </button>
-        </div>
+        {amountPage.map((page, i) => (
+          <div key={i}>
+            <button onClick={() => setPage(() => page)} className="bg-white text-[#4E4B66] py-1 px-3 mr-3 border-2 border-[#DEDEDE] rounded-lg hover:bg-[#1b30cf] hover:text-white focus:bg-[#1b30cf] focus:text-white">
+              {page}
+            </button>
+          </div>
         ))}
-        
       </div>
     </div>
   );

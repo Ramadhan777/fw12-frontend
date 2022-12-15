@@ -1,5 +1,5 @@
 import React from "react";
-import logo from "../../assets/images/tickitz 1.svg";
+import logo from "../../assets/images/Tiku 2.svg";
 
 const Background = () => {
   return (
