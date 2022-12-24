@@ -26,6 +26,7 @@ const FormSignIn = (props) => {
 
     try{
       const result = await dispatch(loginAction({ email, password, cb }));
+      
       if(result.payload.startsWith('Wrong')){
         setErrMessage(result.payload)
       }
