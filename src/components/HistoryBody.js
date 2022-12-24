@@ -36,7 +36,7 @@ const HistoryBody = () => {
 
           <div className="flex flex-col bg-white rounded-md mb-5">
             <div className="flex flex-col min-[450px]:flex-row gap-3 p-8 items-center">
-                <div className="flex flex-col grow items-center">
+                <div className="flex flex-col grow max-[450px]:items-center items-start">
                     <div className="text-sm text-[#AAAAAA] text-center">Tuesday, 07 July 2020 - 04:30pm</div>
                     <div className="text-2xl text-[#000000] font-bold text-center">Spider-Man: Homecoming</div>
                 </div>
@@ -60,7 +60,7 @@ const HistoryBody = () => {
          
           <div className="flex flex-col bg-white rounded-md mb-5">
             <div className="flex flex-col min-[450px]:flex-row gap-3 p-8 items-center">
-                <div className="flex flex-col grow items-center">
+                <div className="flex flex-col grow max-[450px]:items-center items-start">
                     <div className="text-sm text-[#AAAAAA] text-center">Monday, 14 June 2020 - 02:00pm</div>
                     <div className="text-2xl text-[#000000] font-bold text-center">Avengers: End Game</div>
                 </div>
@@ -84,7 +84,7 @@ const HistoryBody = () => {
           
           <div className="flex flex-col bg-white rounded-md mb-5">
             <div className="flex flex-col min-[450px]:flex-row gap-3 p-8 items-center">
-                <div className="flex flex-col grow items-center">
+                <div className="flex flex-col grow max-[450px]:items-center items-start">
                     <div className="text-sm text-[#AAAAAA] text-center">Monday, 10 March 2020 - 04:00pm</div>
                     <div className="text-2xl text-[#000000] font-bold text-center">Thor: Ragnarok</div>
                 </div>

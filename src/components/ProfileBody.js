@@ -86,7 +86,7 @@ const ProfileBody = ({ profile }) => {
         </div>
       </div>
 
-      <div className="grow basis-9/12 ">
+      <div className="grow basis-9/12 w-full">
         <div className="flex bg-white rounded-2xl w-full mb-10">
           <div className="py-6 max-[500px]:ml-5 ml-10 mr-5 border-b-2 border-[#1b30cf]">
             <Link to="">Account Setting</Link>
