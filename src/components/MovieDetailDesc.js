@@ -13,9 +13,9 @@ const MovieDetailDesc = (props) => {
     }
 
     return (
-        <div className="flex px-28 pt-7 pb-20">
-        <div class="left basis-4/12">
-          <img className="w-10/12 p-10 border-2 border-[#DEDEDE] rounded-2xl" src={movie.picture} alt="" />
+      <div className="flex flex-col min-[900px]:flex-row px-10 md:px-14 lg:px-28 pt-7 pb-20">
+        <div class="left basis-4/12 flex max-[900px]:justify-center max-[900px]:mb-8">
+          <img className="w-60 min-[900px]:w-10/12 p-10 border-2 border-[#DEDEDE] rounded-2xl" src={movie.picture} alt="" />
         </div>
 
         <div class="right basis-8/12">

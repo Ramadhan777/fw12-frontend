@@ -108,7 +108,7 @@ const ManageMovieBody = () => {
           </div>
         </div>
 
-        <div className="flex flex-wrap bg-white rounded-md justify-center items-center py-10">
+        <div className="grid grid-cols-4 bg-white rounded-md">
           <CardFilmAdmin movie={movie4} title="Black Widow" genre="Action, Adventure, Sci-Fi" />
           <CardFilmAdmin movie={movie4} title="Black Widow" genre="Action, Adventure, Sci-Fi" />
           <CardFilmAdmin movie={movie4} title="Black Widow" genre="Action, Adventure, Sci-Fi" />

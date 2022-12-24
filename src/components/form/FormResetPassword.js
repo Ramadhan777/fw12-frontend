@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { forgotPasswordAction } from "../../redux/actions/resetPassword";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
@@ -7,8 +7,9 @@ import logo from "../../assets/images/Tiku.svg"
 const FormResetPassword = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [errMessage, setErrMessage] = useState("");
 
-  const forgotPassword = (event) => {
+  const forgotPassword = async (event) => {
     event.preventDefault()
     
     const email = event.target.email.value
@@ -16,7 +17,10 @@ const FormResetPassword = () => {
       navigate('/update-password')
     }
 
-    dispatch(forgotPasswordAction({email, cb}))
+    const data = await dispatch(forgotPasswordAction({email, cb}))
+    if(data.payload.startsWith('Req')){
+      setErrMessage(data.payload)
+    }
   }
 
   return (
@@ -28,6 +32,8 @@ const FormResetPassword = () => {
       <p className="text-lg text-slate-400">we'll send a link to your email shortly</p>
       
       <form onSubmit={forgotPassword}>
+      {errMessage ? <div className="mt-3 bg-[#ED2E7E] py-3 pl-3 font-semibold rounded-md tracking-wider text-center">{errMessage}</div> : null}
+
         <div className="flx flex-col my-8">
           <label for="email">Email</label>
           <input className="w-full border-2 border-gray-200 bg-[#FCFDFE] py-4 pl-4 rounded mt-3" type="email" name="email" id="email" placeholder="Write your email" />

@@ -5,8 +5,7 @@ const CardFilm = (props) => {
   return (
     <div className="group">
       <div className="flex flex-col items-center p-8 mr-5 bg-[rgba(255, 255, 255, 0.2)] hover:bg-white border-2 border-white rounded-lg">
-        <img className="min-w-[140px]" src={props.movie} alt={props.title} />
-        {props.desc === true ? (
+        <img className="max-w-[150px] max-h-[200px]" src={props.movie} alt={props.title} />  
           <div className="hidden group-hover:flex flex-col text-center w-full">
             <div className="flex flex-col items-center justify-center pt-6 pb-3 min-h-[130px]">
               <div className="text-lg font-bold mb-2">
@@ -21,8 +20,7 @@ const CardFilm = (props) => {
                 <Link to={"/movie-detail/" + props.id}>Detail</Link>
               </button>
             </div>
-          </div>
-        ) : null}
+          </div>      
       </div>
     </div>
   );

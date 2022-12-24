@@ -4,23 +4,20 @@ import brand1 from "../assets/images/brand-1.svg";
 import brand2 from "../assets/images/brand-2.svg";
 import brand3 from "../assets/images/brand-3.svg";
 import { Link } from "react-router-dom";
-import facebook from "../assets/images/facebook.svg";
-import instagram from "../assets/images/instagram.svg";
-import twitter from "../assets/images/twitter.svg";
-import youtube from "../assets/images/youtube.svg";
+import {FaFacebook, FaInstagram, FaTwitter, FaYoutube} from "react-icons/fa";
 
 const Footer = () => {
   return (
     <footer className="flex flex-col px-10 md:px-14 lg:px-28 pt-20 pb-10">
-      <div className="flex flex-col min-[930px]:flex-row max-[930px]:items-center mb-10">
-        <div className="flex flex-col grow max-[930px]:items-center max-[930px]:text-center max-[930px]:mb-5">
+      <div className="flex flex-col max-[562px]:items-start min-[931px]:flex-row max-[931px]:items-center mb-10">
+        <div className="flex flex-col grow max-[562px]:items-start max-[930px]:items-center max-[562px]:text-start max-[930px]:text-center max-[930px]:mb-5">
           <img className="w-40 h-15 mb-5" src={footerIcon} alt="Tikckitz" />
-          <p className="text-[#6E7191] ">
+          <p className="text-[#6E7191]">
             Stop waiting in line. Buy tickets <br />
             conveniently, watch movies quietly.
           </p>
         </div>
-        <div className="flex flex-col grow max-[930px]:items-center max-[930px]:text-center max-[930px]:mb-5">
+        <div className="flex flex-col grow max-[562px]:items-start max-[930px]:items-center max-[562px]:text-start max-[930px]:text-center max-[930px]:mb-5">
           <p className="mb-5 font-bold">Explore</p>
           <ul>
             <li>
@@ -35,9 +32,9 @@ const Footer = () => {
             </li>
           </ul>
         </div>
-        <div className="flex flex-col grow max-[930px]:items-center max-[930px]:mb-5" >
+        <div className="flex flex-col grow max-[562px]:items-start max-[930px]:items-center max-[930px]:mb-5" >
           <p className="mb-5 font-bold">Our Sponsor</p>
-          <ul className="flex flex-col max-[930px]:items-center">
+          <ul className="flex flex-col max-[562px]:items-start max-[930px]:items-center">
             <li>
               <img src={brand1} alt="ebv.id" />
             </li>
@@ -49,23 +46,23 @@ const Footer = () => {
             </li>
           </ul>
         </div>
-        <div className="flex flex-col grow max-[930px]:items-center">
+        <div className="flex flex-col max-[562px]:items-start grow max-[930px]:items-center">
           <p className="mb-5 font-bold">Follow us</p>
           <div>
-            <div className="mb-4 flex justify-start ">
-              <img className="w-[30px] h-[30px]" src={facebook} alt="facebook" />
+            <div className="mb-4 flex items-center">
+              <FaFacebook/>
               <p className="ml-2">Tickitz Cinema id</p>
             </div>
-            <div className="mb-4 flex justify-start ">
-              <img className="w-[30px]" src={instagram} alt="instagram" />
+            <div className="mb-4 flex items-center">
+              <FaInstagram />
               <p className="ml-2">tickitz.id</p>
             </div>
-            <div className="mb-4 flex justify-start ">
-              <img className="w-[30px]" src={twitter} alt="twitter" />
+            <div className="mb-4 flex items-center">
+              <FaTwitter />
               <p className="ml-2">tickitz.id</p>
             </div>
-            <div className="mb-4 flex justify-start ">
-              <img className="w-[30px]" src={youtube} alt="youtube" />
+            <div className="mb-4 flex items-center">
+              <FaYoutube />
               <p className="ml-2">Tickitz Cinema id</p>
             </div>
           </div>

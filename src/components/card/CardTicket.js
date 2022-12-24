@@ -6,7 +6,7 @@ import { chooseMovie as chooseMovieAction } from "../../redux/reducers/transacti
 
 const CardTicket = (props) => {
   const dispatch = useDispatch();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const [selectedTime, setSelectedTime] = useState("");
   const [selectedCinema, setSelectedCinema] = useState(null);
   const { id } = useParams();
@@ -17,14 +17,15 @@ const CardTicket = (props) => {
   };
 
   const book = () => {
-    dispatch(chooseMovieAction({
-      movieId:  id,
-      cinemaId: selectedCinema,
-      bookingDate: props.date,
-      bookingTime: selectedTime
-    }
-    ))
-    navigate('/movie-order')
+    dispatch(
+      chooseMovieAction({
+        movieId: id,
+        cinemaId: selectedCinema,
+        bookingDate: props.date,
+        bookingTime: selectedTime,
+      })
+    );
+    navigate("/movie-order");
   };
 
   return (
@@ -35,34 +36,18 @@ const CardTicket = (props) => {
         </div>
         <div className="text-start">
           <div className="text-2xl font-bold">{props.name}</div>
-          <div className="text-xs text-[#6E7191] max-w-[140px]">Whatever street No.12, South Purwokerto</div>
+          <div className="text-xs text-[#6E7191] max-w-[140px]">{props.address}</div>
         </div>
       </div>
 
       <hr />
 
       <div className="grid grid-cols-4 p-5">
-        <button onClick={(e) => selectTime(e.target.innerText, props.cinemaId)} className={`text-xs text-[#6E7191] mb-3 hover:text-[#1b30cf] focus:text-[#1b30cf] focus:font-bold`}>
-          08:30am
-        </button>
-        <button onClick={(e) => selectTime(e.target.innerText, props.cinemaId)} className={`text-xs text-[#6E7191] mb-3 hover:text-[#1b30cf] focus:text-[#1b30cf] focus:font-bold`}>
-          10:30pm
-        </button>
-        <button onClick={(e) => selectTime(e.target.innerText, props.cinemaId)} className={`text-xs text-[#6E7191] mb-3 hover:text-[#1b30cf] focus:text-[#1b30cf] focus:font-bold`}>
-          12:00pm
-        </button>
-        <button onClick={(e) => selectTime(e.target.innerText, props.cinemaId)} className={`text-xs text-[#6E7191] mb-3 hover:text-[#1b30cf] focus:text-[#1b30cf] focus:font-bold`}>
-          02:00pm
-        </button>
-        <button onClick={(e) => selectTime(e.target.innerText, props.cinemaId)} className={`text-xs text-[#6E7191] mb-3 hover:text-[#1b30cf] focus:text-[#1b30cf] focus:font-bold`}>
-          04:30pm
-        </button>
-        <button onClick={(e) => selectTime(e.target.innerText, props.cinemaId)} className={`text-xs text-[#6E7191] mb-3 hover:text-[#1b30cf] focus:text-[#1b30cf] focus:font-bold`}>
-          07:00pm
-        </button>
-        <button onClick={(e) => selectTime(e.target.innerText, props.cinemaId)} className={`text-xs text-[#6E7191] mb-3 hover:text-[#1b30cf] focus:text-[#1b30cf] focus:font-bold`}>
-          08:30pm
-        </button>
+        {props.schedules.map((schedule, i) => (
+          <button onClick={(e) => selectTime(e.target.innerText, props.cinemaId)} className={`text-xs text-[#6E7191] mb-3 hover:text-[#1b30cf] focus:text-[#1b30cf] focus:font-bold`}>
+            {schedule}
+          </button>
+        ))}
       </div>
 
       <div className="flex px-5">

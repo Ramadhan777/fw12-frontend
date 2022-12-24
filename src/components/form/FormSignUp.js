@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import FormButton from "./FormButton";
 import FormHeader from "./FormHeader";
 import FormInput from "./FormInput";
+import {FaEyeSlash, FaEye} from "react-icons/fa"
 import logo from "../../assets/images/Tiku.svg";
 import { useDispatch } from "react-redux";
 import { registerUserAction } from "../../redux/actions/auth";
@@ -10,6 +11,7 @@ import { registerUserAction } from "../../redux/actions/auth";
 const FormSignUp = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const [passwordStatus, setPasswordStatus] = useState(true)
 
   const register = (event) => {
     event.preventDefault();
@@ -36,22 +38,25 @@ const FormSignUp = () => {
       <FormHeader title="Sign Up" desc="Fill your additional details" />
       <form onSubmit={register}>
         <div className="flex flex-col pt-8 pb-5">
-          <FormInput name="First Name" type="firstName" placeholder="Write your first name" />
+          <FormInput name="First Name" inputName="firstName" type="text" placeholder="Write your first name" />
         </div>
         <div className="flex flex-col pb-5">
-          <FormInput name="Last Name" type="lastName" placeholder="Write your last name" />
+          <FormInput name="Last Name" inputName="lastName" type="text" placeholder="Write your last name" />
         </div>
         <div className="flex flex-col pb-5">
-          <FormInput name="Phone Number" type="phoneNumber" placeholder="Write your phone number" />
+          <FormInput name="Phone Number" inputName="phoneNumber" type="text" placeholder="Write your phone number" />
         </div>
         <div className="flex flex-col pb-5">
-          <FormInput name="Email" type="email" placeholder="Write your email" />
+          <FormInput name="Email" inputName="email" type="email" placeholder="Write your email" />
         </div>
         <div className="flex flex-col pb-5">
-          <FormInput name="Password" type="password" placeholder="Write your password" />
+        <div className="relative">
+            <FormInput name="password" inputName="password" type={passwordStatus === true ? "password" : "text"} placeholder="Write your password" />
+            {passwordStatus ? <FaEyeSlash onClick={() => setPasswordStatus(false)}  className="absolute right-3 bottom-5 w-10 hover:cursor-pointer"/> : <FaEye onClick={() => setPasswordStatus(true)}  className="absolute right-3 bottom-5 w-10 hover:cursor-pointer"/>}
+          </div>
         </div>
 
-        <div className="btn flex flex-col items-center">
+        <div className="flex flex-col items-center">
           <FormButton buttonName="Sign Up"/>
           <div>
             <p className="pt-5 pb-7">

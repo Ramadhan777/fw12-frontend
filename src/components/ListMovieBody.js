@@ -50,9 +50,9 @@ const ListMovieBody = () => {
   }
 
   return (
-    <div className="pt-10 px-28 pb-5 bg-[#F5F6F8]">
+    <div className="pt-10 px-10 md:px-14 lg:px-28 pb-5 bg-[#F5F6F8]">
       <div>
-        <div className="flex justify-center items-center">
+        <div className="flex flex-col sm:flex-row justify-center items-center gap-3">
           <div className="flex grow text-2xl font-bold">List Movie</div>
           <div className="flex flex-col items-end gap-3">
             <div>
@@ -67,7 +67,7 @@ const ListMovieBody = () => {
               </select>
             </div>
             <div className="flex gap-3">
-              <input className="search-input py-3 pl-3 pr-5 text-xs rounded-2xl bg-[#fcfdfe] focus:outline-none border-2 border-[#DEDEDE]" type="search" name="search" id="search" placeholder="Search Movie Name ..." />
+              <input className="search-input py-3 pl-3 sm:pr-5 text-xs rounded-2xl bg-[#fcfdfe] focus:outline-none border-2 border-[#DEDEDE]" type="search" name="search" id="search" placeholder="Search Movie Name ..." />
               <div className="bg-[#1b30cf] text-white py-3 px-6 flex justify-center items-center rounded-xl">
                 <button onClick={searchMovie}>Search</button>
               </div>

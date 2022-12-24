@@ -28,12 +28,12 @@ const MovieOrderBody = () => {
   }
 
   return (
-    <div className="flex bg-[#F5F6F8] px-28 py-10">
-      <div className="flex flex-col basis-8/12">
+    <div className="flex flex-col xl:flex-row bg-[#F5F6F8] px-10 md:px-14 lg:px-28 py-10 ">
+      <div className="flex flex-col xl:basis-8/12 mb-7">
         <div className="flex flex-col grow mb-10">
           <div className="text-xl font-bold mb-5">Movie Selected</div>
-          <div className="flex items-center bg-white p-8 rounded-md">
-            <div className="flex grow text-xl font-bold rounded-md">Spider-Man: Homecoming</div>
+          <div className="flex flex-col min-[400px]:flex-row items-center bg-white p-8 rounded-md gap-3">
+            <div className="flex grow text-xl font-bold rounded-md max-[400px]:text-center">Spider-Man: Homecoming</div>
             <div>
               <button className="text-sm py-3 px-6 rounded-md font-bold text-[#1b30cf] bg-[#EFF0F7]">Change Movie</button>
             </div>
@@ -42,14 +42,14 @@ const MovieOrderBody = () => {
 
         <div>
           <div className="text-xl font-bold mb-5">Choose your Seat</div>
-          <div className="flex flex-col bg-white rounded-md">
-            <div className="flex flex-col w-full items-center mb-5 pt-24 px-24">
+          <div className="flex flex-col bg-white rounded-md px-10 sm:px-20 pt-20 pb-16">
+            <div className="flex flex-col w-full items-center mb-5">
               <div className="text-[#4E4B66] mb-3">screen</div>
               <div className="w-full border-b-8 border-[#D6D8E7] "></div>
             </div>
 
-            <div className="grid grid-cols-2 gap-10 w-[80%] ml-16">
-              <div className="grid grid-rows-8 gap-3">
+            <div className="flex overflow-x-auto overflow-y-hidden  mb-7 gap-10">
+              <div className="min-w-[300px] grid grid-rows-8 gap-3">
                 {['A', 'B', 'C', 'D', 'E', 'F', 'G', ' '].map((rows, i) => {
                   return (
                     <div className="grid grid-cols-8 gap-3">
@@ -78,7 +78,7 @@ const MovieOrderBody = () => {
                 })}
               </div>
               
-              <div className="grid grid-rows-8 gap-3">
+              <div className="min-w-[300px] grid grid-rows-8 gap-3">
                 {['A', 'B', 'C', 'D', 'E', 'F', 'G', ' '].map((rows, i) => {
                   return (
                     <div className="grid grid-cols-8 gap-3">
@@ -109,40 +109,40 @@ const MovieOrderBody = () => {
               
             </div>
 
-            <div className="flex flex-col pl-16 py-12 pb-16 pr-24">
+            <div className="flex flex-col">
               <div className="text-lg text-[#000000] font-bold mb-5">Seating Key</div>
-              <div className="flex">
-                <div className="flex">
+              <div className="flex flex-col sm:flex-row gap-3">
+                <div className="flex gap-3">
                   <div className="bg-[#d6d8e7] w-[30px] h-[30px] rounded"></div>
-                  <div className="ml-3 mr-6">Available</div>
+                  <div>Available</div>
                 </div>
-                <div className="flex">
+                <div className="flex gap-3">
                   <div className="bg-[#1b30cf] w-[30px] h-[30px] rounded"></div>
-                  <div className="ml-3 mr-6">Selected</div>
+                  <div>Selected</div>
                 </div>
-                <div className="flex">
+                <div className="flex gap-3">
                   <div className="bg-[#6E7191] w-[30px] h-[30px] rounded"></div>
-                  <div className="ml-3 mr-6">Sold</div>
+                  <div>Sold</div>
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-        <div className="flex pt-10">
+        <div className="flex flex-col min-[530px]:flex-row pt-10 gap-3">
           <div className="flex grow">
-            <button className="bg-[#F5F6F8] px-10 py-3 text-base text-[#1b30cf] border-2 border-[#1b30cf] rounded">Change your movie</button>
+            <button className="max-[530px]:grow bg-[#F5F6F8 px-10 py-3 text-base text-[#1b30cf] border-2 border-[#1b30cf] rounded">Change your movie</button>
           </div>
-          <div>
-            <button onClick={() => checkoutMovie()} className="bg-[#1b30cf] px-12 py-3 text-base text-white border-2 border-[#1b30cf] rounded">
+          <div className="flex">
+            <button onClick={() => checkoutMovie()} className="max-[530px]:grow bg-[#1b30cf] px-12 py-3 text-base text-white border-2 border-[#1b30cf] rounded">
               Checkout Now
             </button>
           </div>
         </div>
       </div>
 
-      <div className="flex basis-3/12 justify-end grow">
-        <div className="flex flex-col w-11/12">
+      <div className="flex xl:basis-3/12 justify-end grow">
+        <div className="flex flex-col w-full xl:w-11/12">
           <div className="text-xl font-bold mb-5">Order Info</div>
           <div className="flex flex-col bg-white rounded-md">
             <div className="flex flex-col items-center p-5  w-full">
