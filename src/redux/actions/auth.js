@@ -3,7 +3,7 @@ import axios from "axios";
 
 export const loginAction = createAsyncThunk("auth/loginAsync", async ({ email, password, cb }) => {
  console.log(process.env.REACT_APP_URL_BACKEND)
-  try{const { data } = await axios.post(`${process.env.REACT_APP_URL_BACKEND}/auth/login`, { email, password });
+  try{const { data } = await axios.post(`https://fw12-backend-eta.vercel.app/auth/login`, { email, password });
   cb();
   return data.results.token;}
   catch(err){
@@ -12,7 +12,7 @@ export const loginAction = createAsyncThunk("auth/loginAsync", async ({ email, p
 });
 
 export const registerUserAction = createAsyncThunk("auth/registerAction", async ({ firstName, lastName, phoneNumber, email, password, cb }) => {
-  const { data } = await axios.post(`${process.env.REACT_APP_URL_BACKEND}/auth/register`, { firstName, lastName, phoneNumber, email, password });
+  const { data } = await axios.post(`https://fw12-backend-eta.vercel.app/auth/register`, { firstName, lastName, phoneNumber, email, password });
   cb()
   return data.results.token
 });
