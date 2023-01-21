@@ -1,5 +1,6 @@
 import React from "react";
 import logo from "../assets/images/tickitz 1.svg";
+import { format } from "fecha";
 
 class Ticket extends React.Component {
   constructor(props) {
@@ -25,36 +26,36 @@ class Ticket extends React.Component {
                 <div className="p-10 text-start">
                   <div className="mb-5">
                     <div className="text-[#AAAAAA] text-sm mb-3">Movie</div>
-                    <div className="text-[#14142B] font-bold">Spider-Man: Homecoming</div>
+                    <div className="text-[#14142B] font-bold">{this.props.transaction.movieTitle || "-"}</div>
                   </div>
 
                   <div className="grid grid-cols-3 mb-5">
                     <div>
                       <div className="text-[#AAAAAA] text-sm mb-3">Date</div>
-                      <div className="text-[#14142B] font-bold">07 July</div>
+                      <div className="text-[#14142B] font-bold">{this.props.transaction.bookingDate ? format(new Date(this.props.transaction?.bookingDate), "mediumDate") : "-"}</div>
                     </div>
                     <div>
                       <div className="text-[#AAAAAA] text-sm mb-3">Time</div>
-                      <div className="text-[#14142B] font-bold">02:00p.m</div>
+                      <div className="text-[#14142B] font-bold">{this.props.transaction?.bookingTime || "-"}</div>
                     </div>
                     <div>
                       <div className="text-[#AAAAAA] text-sm mb-3">Category</div>
-                      <div className="text-[#14142B] font-bold">Action</div>
+                      <div className="text-[#14142B] font-bold"> {this.props.transaction?.genre?.length ? this.props.transaction?.genre[0] : "-"}</div>
                     </div>
                   </div>
 
                   <div className="grid grid-cols-3">
                     <div>
                       <div className="text-[#AAAAAA] text-sm mb-3">Count</div>
-                      <div className="text-[#14142B] font-bold">3 pieces</div>
+                      <div className="text-[#14142B] font-bold">{this.props.transaction?.seatNum ? (this.props.transaction?.seatNum?.length > 2 ? this.props.transaction.seatNum.split(", ").length : Array(this.props.transaction.seatNum).length) : "-"} pcs</div>
                     </div>
                     <div>
                       <div className="text-[#AAAAAA] text-sm mb-3">Seats</div>
-                      <div className="text-[#14142B] font-bold">C4, C5, C6</div>
+                      <div className="text-[#14142B] font-bold"> {this.props.transaction?.seatNum || "-"}</div>
                     </div>
                     <div>
                       <div className="text-[#AAAAAA] text-sm mb-3">Price</div>
-                      <div className="text-[#14142B] font-bold text-2xl">$30.00</div>
+                      <div className="text-[#14142B] font-bold text-2xl">Rp{Number(this.props.transaction.totalPrice).toLocaleString('id-ID') || '-'}</div>
                     </div>
                   </div>
                 </div>

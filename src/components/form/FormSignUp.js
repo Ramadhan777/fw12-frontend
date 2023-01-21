@@ -3,31 +3,41 @@ import { Link, useNavigate } from "react-router-dom";
 import FormButton from "./FormButton";
 import FormHeader from "./FormHeader";
 import FormInput from "./FormInput";
-import {FaEyeSlash, FaEye} from "react-icons/fa"
+import { FaEyeSlash, FaEye } from "react-icons/fa";
 import logo from "../../assets/images/Tiku.svg";
 import { useDispatch } from "react-redux";
-import { registerUserAction } from "../../redux/actions/auth";
+import { registerAction } from "../../redux/actions/auth";
+import { Formik, Form, Field } from "formik";
+import YupPassword from "yup-password";
+import * as Yup from "yup";
+YupPassword(Yup);
+
+const phoneRegExpID = /^(^08)(\d{8,10})$/;
+
+const registerSchema = Yup.object().shape({
+  firstName: Yup.string().required("Required"),
+  email: Yup.string().email("Invalid email").required("Required"),
+  password: Yup.string().password().min(8, "Min lenght 8").minLowercase(1, "Min lowercase 1").minUppercase(1, "Min uppercase 1").minSymbols(1, "Min symbol 1").minNumbers(1, "Min number 1").required("Required"),
+  phoneNumber: Yup.string().matches(phoneRegExpID, "Invalid phone number").required("Required"),
+});
 
 const FormSignUp = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const [passwordStatus, setPasswordStatus] = useState(true)
+  const [passwordStatus, setPasswordStatus] = useState(true);
 
-  const register = (event) => {
-    event.preventDefault();
-    const firstName = event.target.firstName.value;
-    const lastName = event.target.lastName.value;
-    const email = event.target.email.value;
-    const phoneNumber = event.target.phoneNumber.value;
-    const password = event.target.password.value;
+  const register = (value) => {
 
     const cb = () => {
-      navigate('/')
-    }
+      navigate("/");
+    };
 
-    dispatch(registerUserAction({
-      firstName, lastName, phoneNumber, email, password, cb
-    }))
+    dispatch(
+      registerAction({
+        ...value,
+        cb,
+      })
+    );
   };
 
   return (
@@ -36,38 +46,65 @@ const FormSignUp = () => {
         <img className="block md:hidden mb-5 w-[200px]" src={logo} alt="logo tickitz" />
       </div>
       <FormHeader title="Sign Up" desc="Fill your additional details" />
-      <form onSubmit={register}>
-        <div className="flex flex-col pt-8 pb-5">
-          <FormInput name="First Name" inputName="firstName" type="text" placeholder="Write your first name" />
-        </div>
-        <div className="flex flex-col pb-5">
-          <FormInput name="Last Name" inputName="lastName" type="text" placeholder="Write your last name" />
-        </div>
-        <div className="flex flex-col pb-5">
-          <FormInput name="Phone Number" inputName="phoneNumber" type="text" placeholder="Write your phone number" />
-        </div>
-        <div className="flex flex-col pb-5">
-          <FormInput name="Email" inputName="email" type="email" placeholder="Write your email" />
-        </div>
-        <div className="flex flex-col pb-5">
-        <div className="relative">
-            <FormInput name="password" inputName="password" type={passwordStatus === true ? "password" : "text"} placeholder="Write your password" />
-            {passwordStatus ? <FaEyeSlash onClick={() => setPasswordStatus(false)}  className="absolute right-3 bottom-5 w-10 hover:cursor-pointer"/> : <FaEye onClick={() => setPasswordStatus(true)}  className="absolute right-3 bottom-5 w-10 hover:cursor-pointer"/>}
-          </div>
-        </div>
+      <Formik
+        initialValues={{
+          firstName: "",
+          lastName: "",
+          email: "",
+          password: "",
+          phoneNumber: "",
+        }}
+        validationSchema={registerSchema}
+        onSubmit={register}
+      >
+        {({ errors, touched }) => (
+          <Form>
+            <div className="flex flex-col pt-8 pb-5">
+              <label for="firstName">First Name</label>
+              <Field type="firstName" name="firstName" className="w-full border-2 border-gray-200 bg-[#FCFDFE] py-4 pl-4 rounded-2xl mt-3" placeholder="Write your first name" />
+              {errors.firstName && touched.firstName ? <div className="text-red-500 text-sm">{errors?.firstName}</div> : null}
+            </div>
+            <div className="flex flex-col pb-5">
+              <label for="lastName">Last Name</label>
+              <Field type="lastName" name="lastName" className="w-full border-2 border-gray-200 bg-[#FCFDFE] py-4 pl-4 rounded-2xl mt-3" placeholder="Write your first name" />
+            </div>
+            <div className="flex flex-col pb-5">
+              <label for="phoneNumber">Phone Number</label>
+              <Field type="phoneNumber" name="phoneNumber" className="w-full border-2 border-gray-200 bg-[#FCFDFE] py-4 pl-4 rounded-2xl mt-3" placeholder="Write your phone number" />
+              {errors.phoneNumber && touched.phoneNumber ? <div className="text-red-500 text-sm">{errors?.phoneNumber}</div> : null}
+            </div>
+            <div className="flex flex-col pb-5">
+              <label for="email">Email</label>
+              <Field type="email" name="email" className="w-full border-2 border-gray-200 bg-[#FCFDFE] py-4 pl-4 rounded-2xl mt-3" placeholder="Write your email" />
+              {errors.email && touched.email ? <div className="text-red-500 text-sm">{errors?.email}</div> : null}{" "}
+            </div>
+            <div className="flex flex-col mb-8">
+              <label for="password">Password</label>
+              <div className="relative">
+                <Field name="password" className="w-full border-2 border-gray-200 bg-[#FCFDFE] py-4 pl-4 rounded-2xl mt-3" type={passwordStatus === true ? "password" : "text"} placeholder="Write your password" />
+                {passwordStatus ? (
+                  <FaEyeSlash onClick={() => setPasswordStatus(false)} className="absolute right-3 bottom-5 w-10 hover:cursor-pointer" />
+                ) : (
+                  <FaEye onClick={() => setPasswordStatus(true)} className="absolute right-3 bottom-5 w-10 hover:cursor-pointer" />
+                )}
+              </div>
+              {errors.password && touched.password ? <div className="text-red-500 text-sm">{errors.password}</div> : null}
+            </div>
 
-        <div className="flex flex-col items-center">
-          <FormButton buttonName="Sign Up"/>
-          <div>
-            <p className="pt-5 pb-7">
-              <span className="text-slate-400">Already have account </span>{" "}
-              <Link className="text-[#1b30cf] font-medium underline underline-offset-4" to="/sign-in">
-                Sign in
-              </Link>
-            </p>
-          </div>
-        </div>
-      </form>
+            <div className="flex flex-col items-center">
+              <FormButton buttonName="Sign Up" />
+              <div>
+                <p className="pt-5 pb-7">
+                  <span className="text-slate-400">Already have account </span>{" "}
+                  <Link className="text-[#1b30cf] font-medium underline underline-offset-4" to="/sign-in">
+                    Sign in
+                  </Link>
+                </p>
+              </div>
+            </div>
+          </Form>
+        )}
+      </Formik>
     </div>
   );
 };

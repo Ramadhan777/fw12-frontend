@@ -6,13 +6,21 @@ import { createTransaction as trxAction } from "../redux/actions/transactions";
 import { Link } from "react-router-dom";
 import { RiAlertFill } from "react-icons/ri";
 import http from "../helpers/http";
+import { format } from "fecha";
 
 const PaymentBody = () => {
   const dispatch = useDispatch();
   const token = useSelector((state) => state.auth.token);
   const transactionData = useSelector((state) => state.transaction);
+  const [alertError, setAlertError] = useState(false);
   const [alertSuccess, setAlertSuccess] = useState(false);
   const [paymentMethod, setPaymentMethod] = useState([]);
+  const movieName = useSelector((state) => state.transaction.movieName);
+  const price = useSelector((state) => state.transaction.price);
+  const bookingDate = useSelector((state) => state.transaction.bookingDate);
+  const bookingTime = useSelector((state) => state.transaction.bookingTime);
+  const totalPrice = useSelector((state) => state.transaction.totalPrice);
+  const seatNum = useSelector((state) => state.transaction.seatNum);
 
   const [form, setForm] = useState({
     fullName: "",
@@ -22,8 +30,14 @@ const PaymentBody = () => {
   });
 
   const pay = () => {
+    if (!form.paymentMethodId) {
+      setAlertError("Please choose a payment method");
+      setAlertSuccess(false);
+      return;
+    }
     dispatch(trxAction({ ...transactionData, ...form, token }));
     setAlertSuccess(true);
+    setAlertError("");
   };
 
   useEffect(() => {
@@ -35,7 +49,6 @@ const PaymentBody = () => {
 
   return (
     <div className="bg-[#F5F6F8]">
-      {alertSuccess === true ? <div className="mt-5 bg-[#B3FFAE] py-3 pl-3 rounded-md font-bold tracking-wider text-center ">Transaction Success</div> : null}
       <div className="flex flex-col xl:flex-row px-10 md:px-14 lg:px-28 py-10 gap-5">
         <div className="flex flex-col basis-8/12">
           <div className="flex flex-col grow mb-10">
@@ -43,11 +56,13 @@ const PaymentBody = () => {
             <div className="flex flex-col bg-white p-8 rounded-md">
               <div className="flex flex-col sm:flex-row pb-3 border-b-[1px] border-[#E6E6E6]">
                 <div className="flex grow text-[#6B6B6B] text-xl">Date & time</div>
-                <div className="text-xl text-[#000000] font-bold">Tuesday, 07 July 2020 at 02:00 </div>
+                <div className="text-xl text-[#000000] font-bold">
+                  {bookingDate ? format(new Date(bookingDate), "mediumDate") : "-"} at {bookingTime || "-"}
+                </div>
               </div>
               <div className="flex flex-col sm:flex-row py-3 border-b-[1px] border-[#E6E6E6]">
                 <div className="flex grow text-[#6B6B6B] text-xl">Movie title</div>
-                <div className="text-xl text-[#000000] font-bold">Spider-Man: Homecoming</div>
+                <div className="text-xl text-[#000000] font-bold">{movieName}</div>
               </div>
               <div className="flex flex-col sm:flex-row py-3 border-b-[1px] border-[#E6E6E6]">
                 <div className="flex grow text-[#6B6B6B] text-xl">Cinema name</div>
@@ -55,11 +70,11 @@ const PaymentBody = () => {
               </div>
               <div className="flex flex-col sm:flex-row py-3 border-b-[1px] border-[#E6E6E6]">
                 <div className="flex grow text-[#6B6B6B] text-xl">Number of tickets</div>
-                <div className="text-xl text-[#000000] font-bold">3 pieces</div>
+                <div className="text-xl text-[#000000] font-bold">{seatNum.split(", ").length || "-"} pieces</div>
               </div>
               <div className="flex flex-col sm:flex-row pt-3 ">
                 <div className="flex grow text-[#6B6B6B] text-xl">Total payment</div>
-                <div className="text-xl text-[#000000] font-bold">$30,00</div>
+                <div className="text-xl text-[#000000] font-bold">Rp{Number(totalPrice).toLocaleString("id-ID")}</div>
               </div>
             </div>
           </div>
@@ -71,7 +86,7 @@ const PaymentBody = () => {
                 {paymentMethod.map((payment, i) => (
                   <button onClick={() => setForm({ ...form, paymentMethodId: payment.id })} className="border-2 border-[#DEDEDE] w-full h-[50px] flex justify-center items-center hover:bg-[#1b30cfcc] focus:bg-[#1b30cfcc]">
                     <div className="font-bold">{payment.name}</div>
-                </button>
+                  </button>
                 ))}
               </div>
 
@@ -87,6 +102,18 @@ const PaymentBody = () => {
                 <span className="text-[#1b30cf]"> See how it work</span>
               </div>
             </div>
+
+            {alertError ? (
+              <div className="alert alert-error shadow-lg mt-5">
+                <div>
+                  <svg xmlns="http://www.w3.org/2000/svg" className="stroke-current flex-shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  <span>{alertError}</span>
+                </div>
+              </div>
+            ) : null}
+            {alertSuccess === true ? <div className="mt-5 bg-[#B3FFAE] py-3 pl-3 rounded-md font-bold tracking-wider text-center ">Transaction Success</div> : null}
 
             <div className="flex flex-col min-[530px]:flex-row pt-10 gap-3">
               <div className="flex grow">

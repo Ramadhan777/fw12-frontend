@@ -7,7 +7,7 @@ import NavbarProfile from "../components/navbar/NavbarProfile";
 import ShowtimeAndTicket from "../components/ShowtimeAndTicket";
 
 const MovieDetail = () => {
-  const [movie, setMovie] = useState([])
+  const [movie, setMovie] = useState({})
   const { id } = useParams()
 
   useEffect(() => {
@@ -20,7 +20,7 @@ const MovieDetail = () => {
     <>
       <NavbarProfile />
       <MovieDetailDesc movie={movie}/>
-      <ShowtimeAndTicket />
+      <ShowtimeAndTicket movieName={movie.title}/>
       <Footer />
     </>
   );

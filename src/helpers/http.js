@@ -6,7 +6,7 @@ const http = (token) => {
         headers.authorization = 'Bearer '+ token;
     }
     const instance = axios.create({
-        baseURL: 'https://fw12-backend-eta.vercel.app',
+        baseURL: process.env.REACT_APP_URL_BACKEND,
         headers
     })
     return instance 

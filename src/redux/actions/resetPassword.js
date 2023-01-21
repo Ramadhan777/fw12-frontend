@@ -1,11 +1,9 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "axios";
+import http from "../../helpers/http";
 
 export const forgotPasswordAction = createAsyncThunk("auth/forgotPassword", async ({ email, cb }) => {
   try {
-    const { data } = await axios.post(`https://fw12-backend-eta.vercel.app/auth/forgotPassword`, {
-      email,
-    });
+    const { data } = await http().post(`/auth/forgotPassword`, { email });
     cb();
     return data.results;
   } catch (err) {

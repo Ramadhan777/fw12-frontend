@@ -26,10 +26,10 @@ const Navbar = () => {
           <img className="w-32" src={navIcon} alt="icon logo" />
         </div>
         <div className="flex grow ml-4">
-          <Link className="mx-5 md:mx-10" to="">
+          <Link className="mx-5 md:mx-10" to="/">
             Home
           </Link>
-          <Link className="mx-5 md:mx-10" to="">
+          <Link className="mx-5 md:mx-10" to="/list-movie">
             List Movie
           </Link>
         </div>

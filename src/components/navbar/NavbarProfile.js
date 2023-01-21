@@ -1,19 +1,27 @@
-import React from "react";
+import React, { useEffect } from "react";
 import navIcon from "../../assets/images/Tiku.svg";
 import { Link, useNavigate } from "react-router-dom";
 import searchIcon from "../../assets/images/search.svg";
-import profileImage from "../../assets/images/profile.svg";
-import { useDispatch } from "react-redux";
+import defaultUser from "../../assets/images/defaultUser.png";
+import { useDispatch, useSelector } from "react-redux";
 import { logout as logoutAction } from "../../redux/reducers/auth";
+import { getProfilePicture } from "../../redux/actions/profile";
 
 const NavbarProfile = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const token = useSelector(state => state.auth.token)
+  const profilePicture = useSelector(state => state.profile.picture)
 
   const logout = () => {
     dispatch(logoutAction());
     navigate("/sign-in");
   };
+
+  useEffect(() => {
+    dispatch(getProfilePicture(token))
+  }, [token])
+
   return (
     <>
     <nav className="navbar flex bg-base-100 sm:hidden px-7 pt-5 py-5">
@@ -25,7 +33,7 @@ const NavbarProfile = () => {
         </div>
 
         <div className="group relative">
-          <img src={profileImage} alt="profile" />
+          <img src={defaultUser} alt="profile" />
 
           <div className="hidden group-hover:block absolute right-0 top-14 border-2 border-[#dedede] bg-[#FCFDFE] py-2 pl-4 pr-8">
             <div>
@@ -46,7 +54,7 @@ const NavbarProfile = () => {
         <img className="w-32" src={navIcon} alt="icon logo" />
       </div>
       <div className="flex grow ml-4">
-        <Link className="mx-10" to="/homepage">
+        <Link className="mx-10" to="/">
           Home
         </Link>
         <Link className="mx-10" to="/list-movie">
@@ -61,7 +69,7 @@ const NavbarProfile = () => {
           </div>
         </div>
         <div className="group relative">
-          <img src={profileImage} alt="profile" />
+          <img src={profilePicture || defaultUser} alt="profile" className='w-14 h-14 rounded-full '/>
           <div className="hidden group-hover:block absolute right-0 border-2 border-[#dedede] bg-[#FCFDFE] py-2 pl-4 pr-8">
             <div>
               <button onClick={() => navigate("/profile")}>Profile</button>

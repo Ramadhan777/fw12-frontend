@@ -19,16 +19,45 @@ import Dashboard from "./Dashboard";
 import ManageMovieSchedule from "./ManageMovieSchedule";
 
 import PrivateRoute from "../components/PrivateRoute";
+import PublicRoute from "../components/PublicRoute";
 
 const Main = () => {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Homepage />} />
-        <Route path="/sign-in" element={<SignIn />} />
-        <Route path="/sign-up" element={<SignUp />} />
-        <Route path="/reset-password" element={<ResetPassword />} />
-        <Route path="/update-password" element={<UpdatePassword />} />
+        <Route
+          path="/sign-in"
+          element={
+            <PublicRoute>
+              <SignIn />
+            </PublicRoute>
+          }
+        />
+        <Route
+          path="/sign-up"
+          element={
+            <PublicRoute>
+              <SignUp />
+            </PublicRoute>
+          }
+        />
+        <Route
+          path="/reset-password"
+          element={
+            <PublicRoute>
+              <ResetPassword />
+            </PublicRoute>
+          }
+        />
+        <Route
+          path="/update-password"
+          element={
+            <PublicRoute>
+              <UpdatePassword />
+            </PublicRoute>
+          }
+        />
         <Route path="/list-movie" element={<ListMovie />} />
         <Route
           path="/movie-detail/:id"
@@ -71,7 +100,7 @@ const Main = () => {
           }
         />
         <Route
-          path="/movie-ticket-active"
+          path="/movie-ticket"
           element={
             <PrivateRoute>
               <TicketResultActive />

@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const CardFilm = (props) => {
   return (
     <div className="group">
-      <div className="flex flex-col items-center p-8 mr-5 bg-[rgba(255, 255, 255, 0.2)] hover:bg-white border-2 border-white rounded-lg">
+      <div className="flex flex-col items-center p-8 mr-5 bg-[rgba(255, 255, 255, 0.2)] hover:bg-white border-2 border-white rounded-lg hover:shadow-lg">
         <img className="max-w-[150px] max-h-[200px]" src={props.movie} alt={props.title} />  
           <div className="hidden group-hover:flex flex-col text-center w-full">
             <div className="flex flex-col items-center justify-center pt-6 pb-3 min-h-[130px]">

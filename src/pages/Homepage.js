@@ -13,25 +13,12 @@ const Homepage = () => {
 
   return (
     <div className="home-wrapper">
-      {token ? (
-        <>
-          <NavbarProfile />
-          <Hero />
-          <NowShowing desc={true} />
-          <Upcoming />
-          <EmailBox />
-          <Footer />
-        </>
-      ) : (
-        <>
-          <Navbar />
-          <Hero />
-          <NowShowing />
-          <Upcoming />
-          <EmailBox />
-          <Footer />
-        </>
-      )}
+      {token ? <NavbarProfile /> : <Navbar />}
+      <Hero />
+      <NowShowing desc={true} />
+      <Upcoming />
+      <EmailBox />
+      <Footer />
     </div>
   );
 };
