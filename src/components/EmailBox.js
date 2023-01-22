@@ -10,7 +10,7 @@ const EmailBox = () => {
             <h1 className="text-[#1b30cf] text-3xl sm:text-4xl md:text-5xl font-bold">Moviegoers</h1>
           </div>
           <form className="pt-10">
-            <input className="py-4 px-2 md:px-5 mr-3 rounded border-2 border-[#DEDEDE] mb-3" placeholder="Type your email" />
+            <input className="py-4 px-2 md:px-5 mr-3 rounded border-2 border-[#DEDEDE] mb-3 w-full md:w-6/12 lg:4/12" placeholder="Type your email" />
             <button className="py-4 px-7 bg-[#1b30cf] text-white rounded" type="submit">
               join now
             </button>

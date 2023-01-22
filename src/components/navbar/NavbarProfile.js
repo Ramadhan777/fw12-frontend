@@ -24,7 +24,7 @@ const NavbarProfile = () => {
 
   return (
     <>
-      <nav className="navbar flex bg-base-100 sm:hidden px-7 pt-5 py-5">
+      <nav className="navbar flex bg-base-100 sm:hidden px-7 pt-5 py-5 justify-center gap-5">
         <div className="dropdown">
           <label tabIndex={0} className="mt-3 text-4xl">
             ☰
