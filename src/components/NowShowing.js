@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import http from "../helpers/http";
 import { Link } from "react-router-dom";
 import CardFilm from "./card/CardFilm";
 
@@ -8,8 +8,8 @@ const NowShowing = (props) => {
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
-    axios
-      .get("https://fw12-backend-eta.vercel.app/movies/now")
+    http()
+      .get("/movies/now")
       .then((res) => res.data)
       .then((res) => res.results)
       .then((data) => setMovies(data));

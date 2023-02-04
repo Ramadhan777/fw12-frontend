@@ -20,7 +20,7 @@ const NavbarProfile = () => {
 
   useEffect(() => {
     dispatch(getProfilePicture(token));
-  }, [token]);
+  }, [token, dispatch]);
 
   return (
     <>

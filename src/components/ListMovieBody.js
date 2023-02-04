@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 import Month from "./Month";
 import CardFilmUpcoming from "./card/CardFilmUpcoming";
+import http from "../helpers/http";
+import { ImSpinner2 } from "react-icons/im";
 
 const ListMovieBody = () => {
   const [movies, setMovies] = useState([]);
@@ -11,20 +12,26 @@ const ListMovieBody = () => {
   const [genre, setGenre] = useState("");
   const [error, setError] = useState("");
   const [pageGenre, setPageGenre] = useState(null);
+  const [loading, setLoading] = useState(false);
   const [amountPageGenre, setAmountPageGenre] = useState([]);
 
   useEffect(() => {
-    axios
-      .get(`https://fw12-backend-eta.vercel.app/movies?page=${page}&search=${search}`)
-      .then((res) => res.data)
+    http()
+      .get(`/movies?page=${page}&search=${search}`)
       .then((res) => {
-        setAmountPageGenre([])
+        setLoading(true);
+        return res.data;
+      })
+      .then((res) => {
+        setAmountPageGenre([]);
         pageAmount(res.pageInfo.totalData);
         if (!res.results.length) {
+          setLoading(false);
           setError(`${search} not found`);
           return setMovies([]);
         }
-        setError(``)
+        setError(``);
+        setLoading(false);
         return setMovies(res.results);
       });
   }, [page, search]);
@@ -46,21 +53,30 @@ const ListMovieBody = () => {
     setSearch(searchInput.value);
     setPage(1);
   };
-  
+
   const searchMovieByGenre = (genre, page = 1) => {
-    setGenre(genre)
-    setPageGenre(page)
-    axios
-      .get(`https://fw12-backend-eta.vercel.app/movies/genre?page=${page}&search=${genre}`)
+    setError('')
+    setMovies([]);
+    setGenre(genre);
+    setPageGenre(page);
+    setLoading(true);
+    http()
+      .get(`/movies/genre?page=${page}&search=${genre}`)
       .then((res) => res.data)
       .then((res) => {
-        setAmountPage([])
+        setAmountPage([]);
         pageAmountGenre(res.pageInfo.totalData);
+        setLoading(false);
         return res.results;
       })
-      .then((data) => setMovies(data));
+      .then((data) => {
+        setMovies(data);
+      }).catch(err => {
+        setLoading(false)
+        setError(`movies not found`);
+      })
   };
-  
+
   const pageAmountGenre = (movie) => {
     const pageArr = [];
     const result = parseInt(movie) / 8;
@@ -79,7 +95,7 @@ const ListMovieBody = () => {
           <div className="flex grow text-2xl font-bold">List Movie</div>
           <div className="flex flex-col items-end gap-3">
             <div>
-              <select onClick={(e) => searchMovieByGenre(e.target.value)} className="rounded-2xl py-3 pl-2 text-sm bg-[#fcfdfe] border-2 border-[#DEDEDE]">
+              <select onChange={(e) => searchMovieByGenre(e.target.value)} className="rounded-2xl py-3 pl-2 text-sm bg-[#fcfdfe] border-2 border-[#DEDEDE]">
                 <option className="hidden" value="">
                   Sort
                 </option>
@@ -117,14 +133,24 @@ const ListMovieBody = () => {
       </div>
 
       <div className="flex flex-wrap items-center justify-center bg-white py-10 px-16 mt-5">
-      {error && (
+        {error && (
           <div className="alert alert-error shadow-lg">
-          <div>
-            <svg xmlns="http://www.w3.org/2000/svg" className="stroke-current flex-shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-            <span>{error}</span>
+            <div>
+              <svg xmlns="http://www.w3.org/2000/svg" className="stroke-current flex-shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <span>{error}</span>
+            </div>
           </div>
-        </div>
         )}
+
+        {loading && (
+          <div className="flex items-center">
+            <ImSpinner2 className='animate-spin mr-3'/>
+            <p className="font-bold">Loading...</p>
+          </div>
+        )}
+
         {movies.map((movie, i) => (
           <CardFilmUpcoming id={movie.id} destination="/movie-detail" key={i} movie={movie.picture} title={movie.title} genre={movie.genre} alt={movie.title} />
         ))}

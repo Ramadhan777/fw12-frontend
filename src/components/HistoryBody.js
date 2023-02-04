@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import brand1 from "../assets/images/brand-1.svg";
-import brand2 from "../assets/images/brand-2.svg";
+import defaultUser from "../assets/images/defaultUser.png";
 import http from "../helpers/http";
 import { useSelector, useDispatch } from "react-redux";
 import { logout as logoutAction } from "../redux/reducers/auth";
@@ -56,7 +55,7 @@ const HistoryBody = ({ profile }) => {
         <div className="bg-white rounded-2xl mb-3">
           <div className="p-7 text-base text-[#4E4B66]">INFO</div>
           <div className="flex flex-col gap-3 items-center">
-            <img className="w-28 h-28 rounded-full border-2 border-slate-400 bg-cover" src={profile.picture} alt="profileImage" />
+            <img className="w-28 h-28 rounded-full border-2 border-slate-400 bg-cover" src={profile.picture || defaultUser} alt="profileImage" />
             <div className="flex gap-2 items-center justify-center">
               <label htmlFor="picture" className="hover:cursor-pointer flex items-center">
                 <HiOutlinePencil className="text-sm" />

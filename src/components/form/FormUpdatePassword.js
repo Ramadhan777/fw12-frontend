@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 import { resetEmailAndCode } from "../../redux/reducers/resetPassword";
 import FormButton from "./FormButton";
-import FormInput from "./FormInput";
 import logo from "../../assets/images/Tiku.svg";
+import { ImSpinner2 } from "react-icons/im";
 import { FaEyeSlash, FaEye } from "react-icons/fa";
 import { Formik, Form, Field } from "formik";
+import http from "../../helpers/http";
 import YupPassword from "yup-password";
 import * as Yup from "yup";
 YupPassword(Yup);
@@ -20,36 +20,49 @@ const resetPasswordSchema = Yup.object().shape({
 const FormUpdatePassword = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const resetPasswordData = useSelector((state) => state.resetPassword);
+  const email = useSelector((state) => state.resetPassword.email);
   const [passwordStatus, setPasswordStatus] = useState(true);
   const [confirmPasswordStatus, setConfirmPasswordStatus] = useState(true);
+  const [loadingResetPassword, setLoadingResetPassword] = useState(false);
   const [errMessage, setErrMessage] = useState("");
 
   const updatePassword = (value) => {
+    setLoadingResetPassword(true);
     const password = value.password;
     const confirmPassword = value.confirmPassword;
+    const code = value.code;
 
     if (password === confirmPassword) {
-      axios
-        .post("https://fw12-backend-eta.vercel.app/auth/resetPassword", {
-          ...resetPasswordData,
+      http()
+        .post("/auth/resetPassword", {
+          email,
           password,
           confirmPassword,
+          code,
         })
         .then((res) => {
           dispatch(resetEmailAndCode());
           navigate("/sign-in", { state: "Update password berhasil, silahkan login kembali" });
+          setLoadingResetPassword(false);
         })
         .catch((err) => {
-          setErrMessage(err.response.data.message);
+          setLoadingResetPassword(false);
+          setErrMessage("Code Invalid");
+          setTimeout(() => {
+            setErrMessage('')
+          }, 5000)
         });
-    } else {
-      setErrMessage("Password and confirm password not match");
+      } else {
+        setErrMessage("Password and confirm password not match");
+        setLoadingResetPassword(false);
+        setTimeout(() => {
+          setErrMessage('')
+        }, 5000)
     }
   };
 
   return (
-    <div className="basis-12/12 lg:basis-5/12 grow pt-16 lg:pt-28 px-16">
+    <div className="basis-12/12 lg:basis-5/12 grow pt-16 lg:pt-20 px-16 overflow-y-auto">
       <div>
         <img className="block lg:hidden mb-3 w-[200px]" src={logo} alt="logo tickitz" />
       </div>
@@ -60,6 +73,7 @@ const FormUpdatePassword = () => {
         initialValues={{
           password: "",
           confirmPassword: "",
+          code: null,
         }}
         validationSchema={resetPasswordSchema}
         onSubmit={updatePassword}
@@ -67,7 +81,11 @@ const FormUpdatePassword = () => {
         {({ errors, touched }) => (
           <Form>
             {errMessage ? <div className="mt-3 bg-[#ED2E7E] py-3 pl-3 font-semibold rounded-md tracking-wider text-center">{errMessage}</div> : null}
-            <div className="flx flex-col my-8">
+            <div className="flx flex-col my-5">
+              <label for="password">Code</label>
+              <Field name="code" className="w-full border-2 border-gray-200 bg-[#FCFDFE] py-4 pl-4 rounded-2xl mt-3" type="text" placeholder="Write your code" />
+            </div>
+            <div className="flx flex-col my-5">
               <label for="password">Password</label>
               <div className="relative">
                 <Field name="password" className="w-full border-2 border-gray-200 bg-[#FCFDFE] py-4 pl-4 rounded-2xl mt-3" type={passwordStatus === true ? "password" : "text"} placeholder="Write your password" />
@@ -79,7 +97,7 @@ const FormUpdatePassword = () => {
               </div>
               {errors.password && touched.password ? <div className="text-red-500 text-sm">{errors.password}</div> : null}
             </div>
-            <div className="flx flex-col my-8">
+            <div className="flx flex-col my-5">
               <label for="confirmPassword">Confirm Password</label>
               <div className="relative">
                 <Field name="confirmPassword" className="w-full border-2 border-gray-200 bg-[#FCFDFE] py-4 pl-4 rounded-2xl mt-3" type={confirmPasswordStatus === true ? "password" : "text"} placeholder="Write your confirm password" />
@@ -90,10 +108,16 @@ const FormUpdatePassword = () => {
                 )}
               </div>
               {errors.confirmPassword && touched.confirmPassword ? <div className="text-red-500 text-sm">{errors.confirmPassword}</div> : null}
-  
             </div>
 
-            <div className="flex flex-col items-center">
+            <div className="flex flex-col items-center mt-3 pb-8">
+              {loadingResetPassword && (
+                <div className="flex justify-center items-center my-3">
+                  <ImSpinner2 className="animate-spin mr-3" />
+                  <p className="font-bold">Loading...</p>
+                </div>
+              )}
+
               <FormButton buttonName="Submit" path="/sign-in" />
             </div>
           </Form>

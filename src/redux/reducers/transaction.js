@@ -4,7 +4,7 @@ import { createTransaction } from "../actions/transactions";
 
 const initialState = {
   movieId: "",
-  movieName: '',
+  movieName: "",
   cinemaId: "",
   bookingDate: "",
   bookingTime: "",
@@ -13,25 +13,25 @@ const initialState = {
   email: "",
   phoneNumber: "",
   paymentMethodId: "",
-  price: '',
-  totalPrice: ''
+  price: "",
+  totalPrice: "",
 };
 
 const transactionReducer = createSlice({
   name: "transaction",
   initialState,
   reducers: {
-    chooseMovie: (state, {payload}) => {
-      state.movieId = payload.movieId
-      state.cinemaId = payload.cinemaId
-      state.bookingDate = payload.bookingDate
-      state.bookingTime = payload.bookingTime
-      state.price = payload.price
-      state.movieName = payload.movieName
+    chooseMovie: (state, { payload }) => {
+      state.movieId = payload.movieId;
+      state.cinemaId = payload.cinemaId;
+      state.bookingDate = payload.bookingDate;
+      state.bookingTime = payload.bookingTime;
+      state.price = payload.price;
+      state.movieName = payload.movieName;
     },
     chooseSeat: (state, action) => {
-      state.seatNum = action.payload.seatNum
-      state.totalPrice = action.payload.totalPrice
+      state.seatNum = action.payload.seatNum;
+      state.totalPrice = action.payload.totalPrice;
     },
   },
   extraReducers: (build) => {
@@ -42,14 +42,18 @@ const transactionReducer = createSlice({
       };
     });
     build.addCase(createTransaction.fulfilled, (state, action) => {
-     return initialState
+      state.movieName = "";
+      state.seatNum = "";
+      state.fullName = "";
+      state.email = "";
+      state.phoneNumber = "";
+      state.paymentMethodId = "";
+      state.price = "";
+      state.totalPrice = "";
     });
   },
 });
 
-export const {
-  chooseMovie,
-  chooseSeat,
-} = transactionReducer.actions;
+export const { chooseMovie, chooseSeat } = transactionReducer.actions;
 
 export default transactionReducer.reducer;

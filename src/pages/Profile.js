@@ -4,15 +4,15 @@ import { useSelector } from "react-redux";
 import Footer from "../components/Footer";
 import NavbarProfile from "../components/navbar/NavbarProfile";
 import ProfileBody from "../components/ProfileBody";
+import http from '../helpers/http'
 
 const Profile = () => {
   const [profile, setProfile] = useState({});
   const token = useSelector((state) => state.auth.token);
 
   useEffect(() => {
-    axios.get("https://fw12-backend-eta.vercel.app/profile", { headers: { Authorization: `Bearer ${token}` } }).then((res) => setProfile(res.data.results));
+    http(token).get("/profile").then((res) => setProfile(res.data.results));
   }, [token]);
-
   return (
     <>
       <NavbarProfile />

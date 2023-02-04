@@ -2,14 +2,14 @@ import React, { useEffect, useState} from "react";
 import { Link } from "react-router-dom";
 import Month from "./Month";
 import CardFilmUpcoming from "./card/CardFilmUpcoming";
-import axios from "axios";
+import http from "../helpers/http";
 
 const Upcoming = () => {
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
-    axios
-      .get("https://fw12-backend-eta.vercel.app/movies/upcoming")
+    http()
+      .get("/movies/upcoming")
       .then((res) => res.data)
       .then((res) => res.results)
       .then((data) => setMovies(data));

@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import FormButton from "./FormButton";
 import FormHeader from "./FormHeader";
-import FormInput from "./FormInput";
 import { FaEyeSlash, FaEye } from "react-icons/fa";
 import logo from "../../assets/images/Tiku.svg";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { registerAction } from "../../redux/actions/auth";
+import { ImSpinner2 } from "react-icons/im";
 import { Formik, Form, Field } from "formik";
 import YupPassword from "yup-password";
 import * as Yup from "yup";
@@ -25,9 +25,9 @@ const FormSignUp = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [passwordStatus, setPasswordStatus] = useState(true);
+  const isLoading = useSelector((state) => state.auth.isLoading);
 
   const register = (value) => {
-
     const cb = () => {
       navigate("/");
     };
@@ -70,7 +70,7 @@ const FormSignUp = () => {
             </div>
             <div className="flex flex-col pb-5">
               <label for="phoneNumber">Phone Number</label>
-              <Field type="phoneNumber" name="phoneNumber" className="w-full border-2 border-gray-200 bg-[#FCFDFE] py-4 pl-4 rounded-2xl mt-3" placeholder="Write your phone number" />
+              <Field name="phoneNumber" className="w-full border-2 border-gray-200 bg-[#FCFDFE] py-4 pl-4 rounded-2xl mt-3" placeholder="Write your phone number" />
               {errors.phoneNumber && touched.phoneNumber ? <div className="text-red-500 text-sm">{errors?.phoneNumber}</div> : null}
             </div>
             <div className="flex flex-col pb-5">
@@ -92,6 +92,12 @@ const FormSignUp = () => {
             </div>
 
             <div className="flex flex-col items-center">
+              {isLoading && (
+                <div className="flex items-center mb-3">
+                  <ImSpinner2 className="animate-spin mr-3" />
+                  <p className="font-bold">Loading...</p>
+                </div>
+              )}
               <FormButton buttonName="Sign Up" />
               <div>
                 <p className="pt-5 pb-7">

@@ -4,6 +4,7 @@ import { loginAction } from "../../redux/actions/auth";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import FormHeader from "./FormHeader";
 import { FaEyeSlash, FaEye } from "react-icons/fa";
+import { ImSpinner2 } from "react-icons/im";
 import logo from "../../assets/images/Tiku.svg";
 import { Formik, Form, Field } from "formik";
 import YupPassword from "yup-password";
@@ -35,6 +36,10 @@ const FormSignIn = (props) => {
       if (result.payload.startsWith("Wrong")) {
         setErrMessage(result.payload);
       }
+
+      setTimeout(() => {
+        setErrMessage('')
+      }, 5000)
     } catch (err) {
       console.log(err);
     }
@@ -67,7 +72,7 @@ const FormSignIn = (props) => {
               </div>
             )}
             {errMessage ? (
-              <div className="alert alert-error shadow-lg">
+              <div className="alert alert-error shadow-lg mt-3">
                 <div>
                   <svg xmlns="http://www.w3.org/2000/svg" className="stroke-current flex-shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -81,7 +86,7 @@ const FormSignIn = (props) => {
               <Field type="email" name="email" className="w-full border-2 border-gray-200 bg-[#FCFDFE] py-4 pl-4 rounded-2xl mt-3" placeholder="Write your email" />
               {errors.email && touched.email ? <div className="text-red-500 text-sm">{errors?.email}</div> : null}
             </div>
-            <div className="flex flex-col mb-8">
+            <div className="flex flex-col mb-5">
               <label for="password">Password</label>
               <div className="relative">
                 <Field name="password" className="w-full border-2 border-gray-200 bg-[#FCFDFE] py-4 pl-4 rounded-2xl mt-3" type={passwordStatus === true ? "password" : "text"} placeholder="Write your password" />
@@ -95,6 +100,12 @@ const FormSignIn = (props) => {
             </div>
 
             <div className="flex flex-col items-center pb-8">
+              {isLoading && (
+                <div className="flex items-center mb-3">
+                  <ImSpinner2 className='animate-spin mr-3'/>
+                  <p className="font-bold">Loading...</p>
+                </div>
+              )}
               <button className="bg-[#1b30cf] w-full py-4 rounded-2xl text-white text-center" type="submit">
                 Sign In
               </button>{" "}

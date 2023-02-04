@@ -33,6 +33,10 @@ const MovieOrderBody = () => {
       return setSelectedSeat([...selectedSeat.filter((existingSeat) => existingSeat !== seat)]);
     }
 
+    if(selectedSeat.length >= 6 ){
+      return null
+    }
+
     setSelectedSeat([...selectedSeat, seat]);
   };
 
@@ -145,7 +149,7 @@ const MovieOrderBody = () => {
 
         <div className="flex flex-col min-[530px]:flex-row pt-10 gap-3">
           <div className="flex grow">
-            <button className="max-[530px]:grow bg-[#F5F6F8 px-10 py-3 text-base text-[#1b30cf] border-2 border-[#1b30cf] rounded">Change your movie</button>
+            <button onClick={() => navigate(`/movie-detail/${movieId}`)} className="max-[530px]:grow bg-[#F5F6F8 px-10 py-3 text-base text-[#1b30cf] border-2 border-[#1b30cf] rounded">Change your movie</button>
           </div>
           <div className="flex">
             <button onClick={() => checkoutMovie()} className="max-[530px]:grow bg-[#1b30cf] px-12 py-3 text-base text-white border-2 border-[#1b30cf] rounded">
