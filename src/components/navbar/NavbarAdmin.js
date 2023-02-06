@@ -47,7 +47,7 @@ const NavbarAdmin = () => {
             </div>
           </div>
           <div className="group relative">
-            <img src={profilePicture || defaultUser} alt="profile" className="w-14 h-14 rounded-full " />
+            <img src={profilePicture || defaultUser} alt="profile" className="w-14 h-14 rounded-full border-[1px] border-slate-400" />
             <div className="hidden group-hover:block absolute right-0 border-2 border-[#dedede] bg-[#FCFDFE] py-2 pl-4 pr-8">
               <div>
                 <button onClick={() => navigate("/profile")}>Profile</button>

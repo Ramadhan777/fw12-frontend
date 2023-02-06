@@ -26,12 +26,8 @@ const FormSignIn = (props) => {
   const navigate = useNavigate();
 
   const login = async (value) => {
-    const cb = () => {
-      navigate("/");
-    };
-
     try {
-      const result = await dispatch(loginAction({ ...value, cb }));
+      const result = await dispatch(loginAction({ ...value, navigate }));
 
       if (result.payload.startsWith("Wrong")) {
         setErrMessage(result.payload);

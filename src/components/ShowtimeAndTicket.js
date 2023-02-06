@@ -65,7 +65,7 @@ const ShowtimeAndTicket = (props) => {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3">
         {cinema.map((cinema, i) => (
-          <CardTicket key={i} image={brand1} movieName={props.movieName} name={cinema.name} address={cinema.address} cinemaId={cinema.id} schedules={cinema.schedules} price={cinema.price} alertError={setAlertError} date={date} />
+          <CardTicket key={i} image={cinema.picture} movieName={props.movieName} name={cinema.name} address={cinema.address} cinemaId={cinema.id} schedules={cinema.schedules} price={cinema.price} alertError={setAlertError} date={date} />
         ))}
       </div>
 

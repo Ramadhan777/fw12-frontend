@@ -28,14 +28,10 @@ const FormSignUp = () => {
   const isLoading = useSelector((state) => state.auth.isLoading);
 
   const register = (value) => {
-    const cb = () => {
-      navigate("/");
-    };
-
     dispatch(
       registerAction({
         ...value,
-        cb,
+        navigate
       })
     );
   };

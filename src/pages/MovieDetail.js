@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
+import http from '../helpers/http'
 import { useParams } from "react-router-dom";
 import Footer from "../components/Footer";
 import MovieDetailDesc from "../components/MovieDetailDesc";
@@ -11,7 +12,7 @@ const MovieDetail = () => {
   const { id } = useParams()
 
   useEffect(() => {
-    axios.get(`https://fw12-backend-eta.vercel.app/movies/${id}`)
+    http().get(`/movies/${id}`)
     .then(res => res.data)
     .then(res => setMovie(res.results))
   }, [id])

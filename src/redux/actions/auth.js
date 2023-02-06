@@ -1,17 +1,31 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "axios";
+import http from "../../helpers/http";
 
-export const loginAction = createAsyncThunk("auth/loginAsync", async ({ email, password, cb }) => {
-  try{const { data } = await axios.post(`https://fw12-backend-eta.vercel.app/auth/login`, { email, password });
-  cb();
-  return data.results;}
-  catch(err){
-    return err.response.data.message
+export const loginAction = createAsyncThunk("auth/loginAsync", async ({ email, password, navigate }) => {
+  try {
+    const { data } = await http().post(`/auth/login`, { email, password });
+
+    if (data.results.role === "user") {
+      console.log("masuk user");
+      navigate("/");
+    }
+    if (data.results.role === "admin") {
+      console.log("masuk admin");
+      navigate("/movie/manage");
+    }
+
+    return data.results;
+  } catch (err) {
+    return err.response.data.message;
   }
 });
 
-export const registerAction = createAsyncThunk("auth/registerAction", async ({ firstName, lastName, phoneNumber, email, password, cb }) => {
-  const { data } = await axios.post(`https://fw12-backend-eta.vercel.app/auth/register`, { firstName, lastName, phoneNumber, email, password });
-  cb()
-  return data.results
+export const registerAction = createAsyncThunk("auth/registerAction", async ({ firstName, lastName, phoneNumber, email, password, navigate }) => {
+  const { data } = await http().post(`/auth/register`, { firstName, lastName, phoneNumber, email, password });
+
+  if (data.results.role === "user") {
+    navigate("/");
+  }
+
+  return data.results;
 });
