@@ -10,6 +10,7 @@ import { HiOutlinePencil } from "react-icons/hi";
 import { Formik, Form, Field } from "formik";
 import YupPassword from "yup-password";
 import * as Yup from "yup";
+import { uploadProfilePicture } from "../redux/actions/profile";
 YupPassword(Yup);
 
 const phoneRegExpID = /^(^08)(\d{8,10})$/;
@@ -38,6 +39,7 @@ const ProfileBody = ({ profile }) => {
   const [loadingPhoto, setLoadingPhoto] = useState(false);
   const [loadingProfile, setLoadingProfile] = useState(false);
   const [loadingPassword, setLoadingPassword] = useState(false);
+    const profilePicture = useSelector((state) => state.profile.picture);
 
   const updateProfile = async (value) => {
     setLoadingProfile(true);
@@ -96,7 +98,7 @@ const ProfileBody = ({ profile }) => {
       }
       const form = new FormData();
       form.append("picture", file);
-      const { data } = await http(token).patch("/profile/upload", form);
+      const { data } = await dispatch(uploadProfilePicture({token, form}))
       setLoadingPhoto(false);
       setAlertSuccessUpload("Photo profile updated");
       setAlertErrorUpload("");
@@ -120,7 +122,7 @@ const ProfileBody = ({ profile }) => {
         <div className="bg-white rounded-2xl mb-3">
           <div className="p-7 text-base text-[#4E4B66]">INFO</div>
           <div className="flex flex-col gap-3 items-center">
-            <img className="w-28 h-28 rounded-full border-2 border-slate-400 bg-cover" src={profile.picture || defaultUser} alt="profileImage" />
+            <img className="w-28 h-28 rounded-full border-2 border-slate-400 bg-cover" src={profilePicture || defaultUser} alt="profileImage" />
             <div className="flex gap-2 items-center justify-center">
               <label htmlFor="picture" className="hover:cursor-pointer flex items-center">
                 <HiOutlinePencil className="text-sm" />

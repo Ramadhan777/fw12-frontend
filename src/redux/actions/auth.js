@@ -6,11 +6,9 @@ export const loginAction = createAsyncThunk("auth/loginAsync", async ({ email, p
     const { data } = await http().post(`/auth/login`, { email, password });
 
     if (data.results.role === "user") {
-      console.log("masuk user");
       navigate("/");
     }
     if (data.results.role === "admin") {
-      console.log("masuk admin");
       navigate("/movie/manage");
     }
 

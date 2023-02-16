@@ -32,7 +32,7 @@ class Ticket extends React.Component {
                   <div className="grid grid-cols-3 mb-5">
                     <div>
                       <div className="text-[#AAAAAA] text-sm mb-3">Date</div>
-                      <div className="text-[#14142B] font-bold">{this.props.transaction.bookingDate ? format(new Date(this.props.transaction?.bookingDate), "mediumDate") : "-"}</div>
+                      <div className="text-[#14142B] font-bold">{this.props.transaction?.bookingDate ? format(new Date(this.props.transaction?.bookingDate), "mediumDate") : "-"}</div>
                     </div>
                     <div>
                       <div className="text-[#AAAAAA] text-sm mb-3">Time</div>
@@ -68,13 +68,14 @@ class Ticket extends React.Component {
                   </div>
                 </div>
                 <div className="flex items-center justify-center h-full">
-                  {this.props.QRcode ? (
-                    <img src={this.props.QRcode} alt="" />
-                  ) : (
-                    <div className="py-20 px-10 text-center bg-[#F5F6F8]">
-                      <div className="max-w-[120px] font-bold">{this.props.status}</div>
-                    </div>
-                  )}
+                  {
+                    format(new Date(), "isoDate") < this.props.transaction?.bookingDate ? <img src={this.props.QRcode} alt="" /> : (
+                      <div className="py-20 px-10 text-center bg-[#F5F6F8]">
+                        <div className="max-w-[120px] font-bold">Ticket Already Used</div>
+                      </div>
+                    )
+                  }
+        
                 </div>
               </div>
             </div>

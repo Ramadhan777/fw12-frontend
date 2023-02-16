@@ -58,7 +58,7 @@ const MovieOrderBody = () => {
           <div className="flex flex-col min-[400px]:flex-row items-center bg-white p-8 rounded-md gap-3">
             <div className="flex grow text-xl font-bold rounded-md max-[400px]:text-center">{movieName}</div>
             <div>
-              <button className="text-sm py-3 px-6 rounded-md font-bold text-[#1b30cf] bg-[#EFF0F7]">Change Movie</button>
+              <button onClick={() => navigate(`/movie-detail/${movieId}`)} className="text-sm py-3 px-6 rounded-md font-bold text-[#1b30cf] bg-[#EFF0F7]">Change Movie</button>
             </div>
           </div>
         </div>

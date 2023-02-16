@@ -4,6 +4,7 @@ import defaultUser from "../assets/images/defaultUser.png";
 import http from "../helpers/http";
 import { useSelector, useDispatch } from "react-redux";
 import { logout as logoutAction } from "../redux/reducers/auth";
+import { uploadProfilePicture } from "../redux/actions/profile";
 import { HiOutlinePencil } from "react-icons/hi";
 import { format } from "fecha";
 
@@ -24,7 +25,7 @@ const HistoryBody = ({ profile }) => {
       }
       const form = new FormData();
       form.append("picture", file);
-      const { data } = await http(token).patch("/profile/upload", form);
+      const { data } = await dispatch(uploadProfilePicture({token, form}))
       setAlertSuccessUpload("Photo profile updated");
       setAlertErrorUpload("");
     } catch (error) {
