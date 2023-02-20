@@ -26,7 +26,7 @@ const MovieOrderBody = () => {
           setSeatOrdered(seatArr);
         }
       });
-  }, []);
+  }, [bookingDate, bookingTime, cinemaId, movieId]);
 
   const selectSeat = (seat) => {
     if (selectedSeat.includes(seat)) {
@@ -56,7 +56,7 @@ const MovieOrderBody = () => {
         <div className="flex flex-col grow mb-10">
           <div className="text-xl font-bold mb-5">Movie Selected</div>
           <div className="flex flex-col min-[400px]:flex-row items-center bg-white p-8 rounded-md gap-3">
-            <div className="flex grow text-xl font-bold rounded-md max-[400px]:text-center">{movieName}</div>
+            <div className="flex grow text-lg            sm:text-xl font-bold rounded-md max-[400px]:text-center">{movieName}</div>
             <div>
               <button onClick={() => navigate(`/movie-detail/${movieId}`)} className="text-sm py-3 px-6 rounded-md font-bold text-[#1b30cf] bg-[#EFF0F7]">Change Movie</button>
             </div>
@@ -65,7 +65,7 @@ const MovieOrderBody = () => {
 
         <div>
           <div className="text-xl font-bold mb-5">Choose your Seat</div>
-          <div className="flex flex-col bg-white rounded-md px-10 sm:px-20 pt-20 pb-16">
+          <div className="flex flex-col bg-white rounded-md px-8 sm:px-20 pt-20 pb-16">
             <div className="flex flex-col w-full items-center mb-5">
               <div className="text-[#4E4B66] mb-3">screen</div>
               <div className="w-full border-b-8 border-[#D6D8E7] "></div>
@@ -83,8 +83,8 @@ const MovieOrderBody = () => {
                             return (
                               <button
                                 onClick={() => (seatOrdered.includes(seatNum) ? null : selectSeat(seatNum))}
-                                className={`w-7 h-7 rounded-md hover:bg-[#1b30cf] 
-                              ${selectedSeat.includes(seatNum) ? "bg-[#1b30cf]" : "bg-[#D6D8E7]"}`}
+                                className={`w-7 h-7 rounded-md
+                                ${selectedSeat.includes(seatNum) ? "bg-[#1b30cf]" : seatOrdered.includes(seatNum) ? "bg-[#6E7191]" : "bg-[#D6D8E7]"}`}
                               ></button>
                             );
                           } else {
@@ -110,7 +110,7 @@ const MovieOrderBody = () => {
                             return (
                               <button
                                 onClick={() => (seatOrdered.includes(seatNum) ? null : selectSeat(seatNum))}
-                                className={`w-7 h-7 rounded-md ${seatOrdered.includes(seatNum) ? null : "hover:bg-[#1b30cf]"}
+                                className={`w-7 h-7 rounded-md 
                               ${selectedSeat.includes(seatNum) ? "bg-[#1b30cf]" : seatOrdered.includes(seatNum) ? "bg-[#6E7191]" : "bg-[#D6D8E7]"}`}
                               ></button>
                             );
@@ -175,7 +175,7 @@ const MovieOrderBody = () => {
             <div className="flex flex-col px-5 w-full mb-5">
               <div className="flex mb-4">
                 <div className="flex grow text-sm text-[#6B6B6B] ">Movie selected</div>
-                <div className="text-sm font-bold">{movieName}</div>
+                <div className="text-sm font-bold text-right">{movieName}</div>
               </div>
               <div className="flex mb-4">
                 <div className="flex grow text-sm text-[#6B6B6B] ">{bookingDate}</div>

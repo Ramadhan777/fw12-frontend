@@ -1,26 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-
 import { createTransaction as trxAction } from "../redux/actions/transactions";
-
 import { Link } from "react-router-dom";
 import { RiAlertFill } from "react-icons/ri";
 import { ImSpinner2 } from "react-icons/im";
 import http from "../helpers/http";
 import { format } from "fecha";
-
-import { Formik, Form, Field } from "formik";
 import YupPassword from "yup-password";
 import * as Yup from "yup";
 YupPassword(Yup);
-
-const phoneRegExpID = /^(^08)(\d{8,10})$/;
-
-const formSchema = Yup.object().shape({
-  firstName: Yup.string().required("Required"),
-  email: Yup.string().email("Invalid email").required("Required"),
-  phoneNumber: Yup.string().matches(phoneRegExpID, "Invalid phone number").required("Required"),
-});
 
 const PaymentBody = () => {
   const dispatch = useDispatch();
@@ -120,7 +108,7 @@ const PaymentBody = () => {
                     onClick={() => setForm({ ...form, paymentMethodId: payment.id })}
                     className={`border-2 border-[#DEDEDE] w-full h-[50px] flex justify-center items-center ${form.paymentMethodId === payment.id ? "bg-[#1b30cfcc]" : null}`}
                   >
-                    <img src={payment.picture} />
+                    <img src={payment.picture} alt='payment'/>
                   </button>
                 ))}
               </div>
@@ -180,19 +168,11 @@ const PaymentBody = () => {
         </div>
 
         <div className="flex grow basis-12/12 xl:basis-3/12 justify-end">
-          <Formik
-            initialValues={{
-              fullName: "",
-              email: "",
-              phoneNumber: "",
-            }}
-            validationSchema={formSchema}
-          >
-            {({ errors, touched }) => (
+         
               <div className="flex flex-col w-full">
                 <div className="text-xl font-bold mb-5">Personal Info</div>
                 <div className="flex flex-col bg-white rounded-md p-8">
-                  <Form>
+                  <form>
                     <div className="mb-5">
                       <label className="mb-3">Full Name</label>
                       <input
@@ -226,15 +206,14 @@ const PaymentBody = () => {
                         placeholder="0893461297"
                       />
                     </div>
-                  </Form>
+                  </form>
                   <div className="flex items-center w-full py-3 text-base text-[#4E4B66] text-center bg-[#f4b7404d]">
                     <RiAlertFill className="w-20" />
                     <div className="text-sm">Fill your data Correctly</div>
                   </div>
                 </div>
               </div>
-            )}
-          </Formik>
+         
         </div>
       </div>
     </div>

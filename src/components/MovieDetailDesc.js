@@ -19,8 +19,8 @@ const MovieDetailDesc = (props) => {
         </div>
 
         <div class="right basis-8/12">
-          <div>
-            <h1 className="text-3xl font-bold">{movie.title}</h1>
+          <div className='max-[900px]:text-center '>
+            <h1 className="text-xl sm:text-3xl font-bold">{movie.title}</h1>
             <p className="text-base text-slate-500 mt-2">{movie.genre}</p>
           </div>
           <div className="flex my-7">

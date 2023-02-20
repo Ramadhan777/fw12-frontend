@@ -9,13 +9,11 @@ import http from "../helpers/http";
 const TicketResultActive = () => {
   const [transaction, setTransaction] = React.useState({});
   const {state} = useLocation()
-  console.log(state)
   useEffect(() => {
     http()
       .get(`/transactions/${state}`)
       .then((res) => setTransaction(res.data.results))
       .catch((err) => {
-        console.log(err);
         setTransaction({});
       });
   }, [state]);

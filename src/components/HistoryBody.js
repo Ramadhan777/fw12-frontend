@@ -25,7 +25,7 @@ const HistoryBody = ({ profile }) => {
       }
       const form = new FormData();
       form.append("picture", file);
-      const { data } = await dispatch(uploadProfilePicture({token, form}))
+      await dispatch(uploadProfilePicture({token, form}))
       setAlertSuccessUpload("Photo profile updated");
       setAlertErrorUpload("");
     } catch (error) {
@@ -40,7 +40,6 @@ const HistoryBody = ({ profile }) => {
       .get("/transactions/list")
       .then((res) => setTransactionHistory(res.data.results))
       .catch((err) => {
-        console.log(err);
         setTransactionHistory([]);
       });
   }, [token]);

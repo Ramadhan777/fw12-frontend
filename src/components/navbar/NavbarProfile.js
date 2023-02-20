@@ -31,6 +31,12 @@ const NavbarProfile = () => {
           </label>
           <ul tabIndex={0} className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
             <li>
+              <button onClick={() => navigate("/")}>Home</button>
+            </li>
+            <li>
+              <button onClick={() => navigate("/list-movie")}>List Movie</button>
+            </li>
+            <li>
               <button onClick={() => navigate("/profile")}>Profile</button>
             </li>
             <li>

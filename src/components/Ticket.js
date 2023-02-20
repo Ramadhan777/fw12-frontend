@@ -1,20 +1,20 @@
 import React from "react";
-import logo from "../assets/images/tickitz 1.svg";
+import logo from "../assets/images/Tiku 2.svg";
 import { format } from "fecha";
-
 class Ticket extends React.Component {
+  // eslint-disable-next-line no-useless-constructor
   constructor(props) {
     super(props);
   }
 
   render() {
     return (
-      <div className="px-36 py-10 bg-[#E5E5E5]">
+      <div className="px-8 md:px-28 lg:px-36 py-10 bg-[#E5E5E5]">
         <div className="bg-white pt-12 px-10 pb-20 text-center">
-          <div className="text-2xl font-bold mb-5">Proof of Payment</div>
+          <div className="text-xl sm:text-2xl font-bold mb-5">Proof of Payment</div>
 
           <div className="overflow-x-auto">
-            <div className="flex mx-10 border-2 border-[#DEDEDE] rounded-2xl min-w-[800px]">
+            <div className="flex mx-3 sm:mx-10 border-2 border-[#DEDEDE] rounded-2xl min-w-[800px]">
               <div className="flex flex-col basis-8/12">
                 <div className="h-15 w-full flex items-center bg-[#1b30cf] rounded-tl-2xl">
                   <div className="flex grow py-3 pl-10">

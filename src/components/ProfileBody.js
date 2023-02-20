@@ -39,7 +39,7 @@ const ProfileBody = ({ profile }) => {
   const [loadingPhoto, setLoadingPhoto] = useState(false);
   const [loadingProfile, setLoadingProfile] = useState(false);
   const [loadingPassword, setLoadingPassword] = useState(false);
-    const profilePicture = useSelector((state) => state.profile.picture);
+  const profilePicture = useSelector((state) => state.profile.picture);
 
   const updateProfile = async (value) => {
     setLoadingProfile(true);
@@ -63,7 +63,7 @@ const ProfileBody = ({ profile }) => {
 
     if (password === confirmPassword) {
       try {
-        const { data } = await http(token).patch("/profile", value);
+        await http(token).patch("/profile", value);
 
         setAlertSuccessPassword("Password updated");
         setAlertErrorPassword("");
@@ -98,7 +98,7 @@ const ProfileBody = ({ profile }) => {
       }
       const form = new FormData();
       form.append("picture", file);
-      const { data } = await dispatch(uploadProfilePicture({token, form}))
+      await dispatch(uploadProfilePicture({token, form}))
       setLoadingPhoto(false);
       setAlertSuccessUpload("Photo profile updated");
       setAlertErrorUpload("");
@@ -106,7 +106,6 @@ const ProfileBody = ({ profile }) => {
         setAlertSuccessUpload("");
       }, 5000);
     } catch (error) {
-      console.log(error);
       setLoadingPhoto(false);
       setAlertErrorUpload(error);
       setTimeout(() => {

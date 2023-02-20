@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from "react";
-import axios from "axios";
 import http from '../helpers/http'
 import { useParams } from "react-router-dom";
 import Footer from "../components/Footer";

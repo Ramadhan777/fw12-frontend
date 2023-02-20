@@ -12,8 +12,6 @@ import Payment from "./Payment";
 import Profile from "./Profile";
 import History from "./History";
 import TicketResultActive from "./TicketResultActive";
-import TicketResultUsed from "./TicketResultUsed";
-import TicketResultExpired from "./TicketResultExpired";
 import ManageMovie from "./ManageMovie";
 import Dashboard from "./Dashboard";
 import ManageMovieSchedule from "./ManageMovieSchedule";
@@ -111,22 +109,6 @@ const Main = () => {
               element={
                 <PrivateRoute>
                   <TicketResultActive />
-                </PrivateRoute>
-              }
-            />
-            <Route
-              path="/movie-ticket-used"
-              element={
-                <PrivateRoute>
-                  <TicketResultUsed />
-                </PrivateRoute>
-              }
-            />
-            <Route
-              path="/movie-ticket-expired"
-              element={
-                <PrivateRoute>
-                  <TicketResultExpired />
                 </PrivateRoute>
               }
             />

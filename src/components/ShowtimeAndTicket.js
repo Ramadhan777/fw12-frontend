@@ -1,9 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import moment from "moment";
-import brand1 from "../assets/images/brand-1.svg";
-import brand2 from "../assets/images/brand-2.svg";
-import brand3 from "../assets/images/brand-3.svg";
 import CardTicket from "../components/card/CardTicket";
 import http from "../helpers/http";
 import { format } from "fecha";
@@ -24,7 +21,7 @@ const ShowtimeAndTicket = (props) => {
         console.log(err);
         setCinema([]);
       });
-  }, [city, date]);
+  }, [city, date, id]);
 
   return (
     <div className="bg-[#F5F6F8] py-12 px-5 md:px-14 lg:px-28 text-center ">
