@@ -30,15 +30,12 @@ const FormUpdatePassword = () => {
     setLoadingResetPassword(true);
     const password = value.password;
     const confirmPassword = value.confirmPassword;
-    const code = value.code;
 
     if (password === confirmPassword) {
       http()
         .post("/auth/resetPassword", {
           email,
-          password,
-          confirmPassword,
-          code,
+          ...value
         })
         .then((res) => {
           dispatch(resetEmailAndCode());
@@ -62,7 +59,7 @@ const FormUpdatePassword = () => {
   };
 
   return (
-    <div className="basis-12/12 lg:basis-5/12 grow pt-16 lg:pt-20 px-16 overflow-y-auto">
+    <div className="basis-12/12 lg:basis-5/12 grow pt-10 md:pt-16 lg:pt-20 px-16 overflow-y-auto">
       <div>
         <img className="block lg:hidden mb-3 w-[200px]" src={logo} alt="logo tickitz" />
       </div>

@@ -16,6 +16,7 @@ const resetPasswordReducer = createSlice({
   },
   extraReducers: (build) => {
     build.addCase(forgotPasswordAction.fulfilled, (state, action) => {
+      console.log(action.payload)
       state.email = action.payload.email;
     });
   },
